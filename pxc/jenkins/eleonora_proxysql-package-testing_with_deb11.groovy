@@ -73,7 +73,7 @@ void setup_package_tests() {
 
 void runPlaybook(String action_to_test) {
     def playbook = product_action_playbooks[params.product_to_test][action_to_test]
-    def playbook_path = "-v package-testing/playbooks/${playbook}"
+    def playbook_path = "package-testing/playbooks/${playbook}"
 
     sh '''
         git clone --depth 1 "${git_repo}"
@@ -123,7 +123,7 @@ pipeline {
             name: 'install_repo'
         )
         string(
-            defaultValue: 'https://github.com/eleo007/package-testing.git',
+            defaultValue: 'https://github.com/Percona-QA/package-testing.git',
             description: '',
             name: 'git_repo',
             trim: false
@@ -165,7 +165,6 @@ pipeline {
                         runPlaybook("upgrade")
                     }
                 }
-
             }
         }
     }
