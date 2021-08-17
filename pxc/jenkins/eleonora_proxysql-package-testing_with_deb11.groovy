@@ -73,7 +73,7 @@ void setup_package_tests() {
 
 void runPlaybook(String action_to_test) {
     def playbook = product_action_playbooks[params.product_to_test][action_to_test]
-    def playbook_path = "package-testing/playbooks/${playbook}"
+    def playbook_path = "- vvv package-testing/playbooks/${playbook}"
 
     sh '''
         git clone --depth 1 "${git_repo}"
