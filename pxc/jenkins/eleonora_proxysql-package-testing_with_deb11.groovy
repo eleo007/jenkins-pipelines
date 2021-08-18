@@ -33,14 +33,7 @@ setup_stretch_package_tests = { ->
     '''
 }
 
-setup_buster_package_tests = { ->
-    sh '''
-        sudo apt-get update
-        sudo apt-get install -y ansible
-    '''
-}
-
-setup_bullseye_package_tests = { ->
+setup_buster_bullseye_package_tests = { ->
     sh '''
         sudo apt-get update
         sudo apt-get install -y ansible
@@ -58,8 +51,8 @@ setup_ubuntu_package_tests = { ->
 
 node_setups = [
     "min-stretch-x64": setup_stretch_package_tests,
-    "min-buster-x64": setup_buster_package_tests,
-    "min-bullseye-x64": setup_bullseye_package_tests,
+    "min-buster-x64": setup_buster_bullseye_package_tests,
+    "min-bullseye-x64": setup_buster_bullseye_package_tests,
     "min-centos-7-x64": setup_centos_package_tests,
     "min-centos-8-x64": setup_centos_package_tests,
     "min-xenial-x64": setup_ubuntu_package_tests,
