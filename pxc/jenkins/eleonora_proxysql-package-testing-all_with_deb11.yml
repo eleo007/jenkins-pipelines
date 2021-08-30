@@ -37,6 +37,13 @@
                 - "ps57"
                 - "ps80"
             description: 'Choose client_test playbook which checks that only client packages can be installed'
+        - choice:
+            name: repo_for_client_to_test
+            choices:
+                - "testing"
+                - "main"
+                - "experimental"
+            description: 'Choose repo to use for client installation'
         - string:
             name: git_repo
             default: 'https://github.com/eleo007/package-testing.git'
