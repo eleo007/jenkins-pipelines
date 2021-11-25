@@ -144,15 +144,15 @@ pipeline {
                     }
                 }
 
-                stage('Upgrade') {
-                    agent {
-                        label params.node_to_test
-                    }
-
-                    steps {
-                        runPlaybook("upgrade")
-                    }
-                }
+#                stage('Upgrade') {
+#                    agent {
+#                        label params.node_to_test
+#                    }
+#
+#                    steps {
+#                        runPlaybook("upgrade")
+#                    }
+#                }
 
             }
         }

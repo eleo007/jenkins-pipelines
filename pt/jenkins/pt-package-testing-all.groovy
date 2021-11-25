@@ -32,7 +32,7 @@ pipeline {
             name: 'install_repo'
         )
         string(
-            defaultValue: 'https://github.com/Percona-QA/package-testing.git',
+            defaultValue: 'https://github.com/eleo007/package-testing.git',
             description: '',
             name: 'git_repo',
             trim: false
