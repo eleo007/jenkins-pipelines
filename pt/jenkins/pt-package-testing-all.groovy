@@ -1,4 +1,4 @@
-library changelog: false, identifier: 'lib@master', retriever: modernSCM([
+library changelog: false, identifier: 'lib@PT-2018-pt-packagetesting', retriever: modernSCM([
     $class: 'GitSCMSource',
     remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ]) _
