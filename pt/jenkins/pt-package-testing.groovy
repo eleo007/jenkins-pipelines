@@ -64,7 +64,7 @@ void runPlaybook(String action_to_test) {
     def playbook_path = "package-testing/playbooks/${playbook}"
 
     sh '''
-        git clone --depth 1 "${git_repo}"
+        git clone -b PT-2018-pt-packagetesting --depth 1 "${git_repo}"
     '''
 
     setup_package_tests()
