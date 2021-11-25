@@ -1,0 +1,48 @@
+- job:
+    name: pt-package-testing
+    project-type: pipeline
+    description: |
+        Do not edit this job through the web!
+    properties:
+        - build-discarder:
+            num-to-keep: 15
+    concurrent: true
+    pipeline-scm:
+        scm:
+            - git:
+                url: https://github.com/eleo007/jenkins-pipelines.git
+                branches:
+                    - 'master'
+                wipe-workspace: true
+        lightweight-checkout: true
+        script-path: pxc/jenkins/pt-package-testing.groovy
+    parameters:
+        - choice:
+            name: product_to_test
+            choices:
+                - "percona-toolkit 3"
+            description: 'Product version to test'
+        - choice:
+            name: node_to_test
+            choices:
+                - 'min-centos-7-x64'
+                - 'min-centos-8-x64'
+                - 'min-xenial-x64'
+                - 'min-bionic-x64'
+                - 'min-focal-x64'
+                - 'min-stretch-x64'
+                - 'min-buster-x64'
+                - 'min-bullseye-x64'
+            description: 'Node to run tests'
+        - choice:
+            name: install_repo
+            choices:
+                - "testing"
+                - "main"
+                - "experimental"
+            description: 'Choose the repo to install pt packages from'
+        - string:
+            name: git_repo
+            default: 'https://github.com/Percona-QA/package-testing.git'
+            description: ""
+            trim: false
