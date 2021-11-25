@@ -19,7 +19,7 @@
         - choice:
             name: product_to_test
             choices:
-                - "percona-toolkit 3"
+                - "pt3"
             description: 'Product version to test'
         - choice:
             name: install_repo

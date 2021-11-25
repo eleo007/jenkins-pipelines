@@ -22,13 +22,13 @@ pipeline {
 
     parameters {
         choice(
-            choices: ['percona-toolkit 3'],
+            choices: ['pt3'],
             description: 'Product version to test',
             name: 'product_to_test'
         )
         choice(
             choices: ['testing', 'main', 'experimental'],
-            description: 'Choose the repo to install proxysql packages from',
+            description: 'Choose the repo to install percona toolkit packages from',
             name: 'install_repo'
         )
         string(

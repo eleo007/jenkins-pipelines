@@ -4,9 +4,9 @@ library changelog: false, identifier: 'lib@master', retriever: modernSCM([
 ]) _
 
 product_action_playbooks = [
-    proxysql: [
+    pt3: [
         install: 'pt.yml'
-    ],
+    ]
 ]
 
 setup_centos_package_tests = { ->
@@ -86,8 +86,8 @@ pipeline {
 
     parameters {
         choice(
-            choices: ['percona-toolkit 3'],
-            description: 'Choose the product version to test: proxysql OR proxysql2',
+            choices: ['pt3'],
+            description: 'Product version to test',
             name: 'product_to_test'
         )
         choice(
@@ -106,7 +106,7 @@ pipeline {
         )
         choice(
             choices: ['testing', 'main', 'experimental'],
-            description: 'Choose the repo to install proxysql packages from',
+            description: 'Choose the repo to install percona-toolkit packages from',
             name: 'install_repo'
         )
         string(
