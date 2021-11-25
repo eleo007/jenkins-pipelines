@@ -5,8 +5,7 @@ library changelog: false, identifier: 'lib@master', retriever: modernSCM([
 
 product_action_playbooks = [
     proxysql: [
-        install: 'pt.yml',
-#        upgrade: 'pt_upgrade.yml',
+        install: 'pt.yml'
     ],
 ]
 
@@ -143,17 +142,6 @@ pipeline {
                         runPlaybook("install")
                     }
                 }
-
-#                stage('Upgrade') {
-#                    agent {
-#                        label params.node_to_test
-#                    }
-#
-#                    steps {
-#                        runPlaybook("upgrade")
-#                    }
-#                }
-
             }
         }
     }
