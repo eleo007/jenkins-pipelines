@@ -15,7 +15,7 @@
                     - 'PT-2018-pt-packagetesting'
                 wipe-workspace: true
         lightweight-checkout: true
-        script-path: pxc/jenkins/pt-package-testing.groovy
+        script-path: pt/jenkins/pt-package-testing.groovy
     parameters:
         - choice:
             name: product_to_test
