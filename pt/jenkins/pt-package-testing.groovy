@@ -148,7 +148,12 @@ pipeline {
                     agent {
                         label params.node_to_test
                     }
-
+                    when {
+                        beforeAgent true
+                        expression { 
+                            params.install_repo == 'testing' 
+                        } 
+                    }
                     steps {
                         runPlaybook("upgrade")
                     }
