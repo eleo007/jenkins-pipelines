@@ -5,7 +5,8 @@ library changelog: false, identifier: 'lib@PT-2018-pt-packagetesting', retriever
 
 product_action_playbooks = [
     pt3: [
-        install: 'pt.yml'
+        install: 'pt.yml',
+        upgrade: 'pt_upgrade.yml'
     ]
 ]
 
@@ -140,6 +141,16 @@ pipeline {
 
                     steps {
                         runPlaybook("install")
+                    }
+                }
+
+                stage('Upgrade') {
+                    agent {
+                        label params.node_to_test
+                    }
+
+                    steps {
+                        runPlaybook("upgrade")
                     }
                 }
             }
