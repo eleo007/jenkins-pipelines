@@ -132,32 +132,29 @@ pipeline {
             }
         }
 
-        stage('Run parallel') {
-            parallel {
-                stage('Install') {
-                    agent {
-                        label params.node_to_test
-                    }
+        stage('Install') {
+            agent {
+                label params.node_to_test
+            }
 
-                    steps {
-                        runPlaybook("install")
-                    }
-                }
+            steps {
+                runPlaybook("install")
+                sleep 120
+            }
+        }
 
-                stage('Upgrade') {
-                    agent {
-                        label params.node_to_test
-                    }
-                    when {
-                        beforeAgent true
-                        expression { 
-                            params.install_repo == 'testing' 
-                        } 
-                    }
-                    steps {
-                        runPlaybook("upgrade")
-                    }
+        stage('Upgrade') {
+            agent {
+                label params.node_to_test
+            }
+            when {
+                beforeAgent true
+                expression { 
+                    params.install_repo == 'testing' 
                 }
+            }
+            steps {
+                runPlaybook("upgrade")
             }
         }
     }
