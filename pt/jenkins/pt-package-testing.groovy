@@ -124,7 +124,6 @@ pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr: '15'))
         skipDefaultCheckout()
-        timestamps()
     }
 
     stages {
