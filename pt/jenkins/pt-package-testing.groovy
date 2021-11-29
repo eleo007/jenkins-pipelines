@@ -139,7 +139,7 @@ pipeline {
 
             steps {
                 runPlaybook("install")
-                sleep 120
+                sleep 600
             }
         }
 
