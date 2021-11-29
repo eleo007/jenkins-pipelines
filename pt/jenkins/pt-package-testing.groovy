@@ -1,3 +1,5 @@
+pipeline_timeout = 10
+
 library changelog: false, identifier: 'lib@PT-2018-pt-packagetesting', retriever: modernSCM([
     $class: 'GitSCMSource',
     remote: 'https://github.com/eleo007/jenkins-pipelines.git'
@@ -139,7 +141,6 @@ pipeline {
 
             steps {
                 runPlaybook("install")
-                sleep 600
             }
         }
 
