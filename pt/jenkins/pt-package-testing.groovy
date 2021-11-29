@@ -67,6 +67,7 @@ void runPlaybook(String action_to_test) {
     def playbook_path = "package-testing/playbooks/${playbook}"
 
     sh '''
+        echo Start: \$(date -R")
         git clone -b PT-2018-pt-packagetesting --depth 1 "${git_repo}"
     '''
 
@@ -123,6 +124,7 @@ pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr: '15'))
         skipDefaultCheckout()
+        timestamps()
     }
 
     stages {
@@ -142,6 +144,13 @@ pipeline {
             steps {
                 runPlaybook("install")
             }
+            post {
+                always {
+                    sh '''
+                        echo Finish: \$(date -R)
+                    '''
+                }
+            }
         }
 
         stage('Upgrade') {
@@ -156,6 +165,13 @@ pipeline {
             }
             steps {
                 runPlaybook("upgrade")
+            }
+            post {
+                always {
+                    sh '''
+                        echo Finish: \$(date -R)
+                    '''
+                }
             }
         }
     }
