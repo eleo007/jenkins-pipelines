@@ -1,5 +1,3 @@
-pipeline_timeout = 5
-
 library changelog: false, identifier: 'lib@PT-2018-pt-packagetesting', retriever: modernSCM([
     $class: 'GitSCMSource',
     remote: 'https://github.com/eleo007/jenkins-pipelines.git'
@@ -81,6 +79,8 @@ void runPlaybook(String action_to_test) {
         --inventory 127.0.0.1, \
         --limit 127.0.0.1 \
         ${playbook_path}
+
+        echo Start: \$(date -R)
     """
 }
 
@@ -135,41 +135,31 @@ pipeline {
             }
         }
 
-        stage('Install') {
-            agent {
-                label params.node_to_test
-            }
+        stage('Run parallel') {
+            parallel {
+                stage('Install') {
+                    agent {
+                        label params.node_to_test
+                    }
 
-            steps {
-                runPlaybook("install")
-            }
-            post {
-                always {
-                    sh '''
-                        echo Finish: \$(date -R)
-                    '''
+                    steps {
+                        runPlaybook("install")
+                    }
                 }
-            }
-        }
 
-        stage('Upgrade') {
-            agent {
-                label params.node_to_test
-            }
-            when {
-                beforeAgent true
-                expression { 
-                    params.install_repo == 'testing' 
-                }
-            }
-            steps {
-                runPlaybook("upgrade")
-            }
-            post {
-                always {
-                    sh '''
-                        echo Finish: \$(date -R)
-                    '''
+                stage('Upgrade') {
+                    agent {
+                        label params.node_to_test
+                    }
+                    when {
+                        beforeAgent true
+                        expression { 
+                            params.install_repo == 'testing' 
+                        } 
+                    }
+                    steps {
+                        runPlaybook("upgrade")
+                    }
                 }
             }
         }
