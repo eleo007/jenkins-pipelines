@@ -1,4 +1,4 @@
-library changelog: false, identifier: 'lib@PT-2018-pt-packagetesting', retriever: modernSCM([
+library changelog: false, identifier: 'lib@PT-2018-pt-packagetesting-pxc', retriever: modernSCM([
     $class: 'GitSCMSource',
     remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ]) _
@@ -65,7 +65,7 @@ void runPlaybook(String action_to_test) {
     def playbook_path = "package-testing/playbooks/${playbook}"
 
     sh '''
-        git clone -b PT-2018-pt-packagetesting --depth 1 "${git_repo}"
+        git clone -b PT-2018-pt-packagetesting-pxc --depth 1 "${git_repo}"
     '''
 
     setup_package_tests()
