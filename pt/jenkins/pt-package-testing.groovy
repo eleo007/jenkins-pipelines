@@ -65,6 +65,7 @@ void runPlaybook(String action_to_test) {
     def playbook_path = "package-testing/playbooks/${playbook}"
 
     sh '''
+        echo Start: \$(date -R)
         git clone -b PT-2018-pt-packagetesting-pxc --depth 1 "${git_repo}"
     '''
 
@@ -78,6 +79,8 @@ void runPlaybook(String action_to_test) {
         --inventory 127.0.0.1, \
         --limit 127.0.0.1 \
         ${playbook_path}
+
+        echo Start: \$(date -R)
     """
 }
 
