@@ -1,4 +1,4 @@
-pipeline_timeout = 10
+pipeline_timeout = 5
 
 library changelog: false, identifier: 'lib@PT-2018-pt-packagetesting', retriever: modernSCM([
     $class: 'GitSCMSource',
@@ -67,7 +67,7 @@ void runPlaybook(String action_to_test) {
     def playbook_path = "package-testing/playbooks/${playbook}"
 
     sh '''
-        echo Start: \$(date -R")
+        echo Start: \$(date -R)
         git clone -b PT-2018-pt-packagetesting --depth 1 "${git_repo}"
     '''
 
