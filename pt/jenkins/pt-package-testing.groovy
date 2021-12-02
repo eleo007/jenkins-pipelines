@@ -154,7 +154,7 @@ pipeline {
                     when {
                         beforeAgent true
                         expression { 
-                            params.install_repo == 'testing' 
+                            params.install_repo != 'main' 
                         } 
                     }
                     steps {
