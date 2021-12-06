@@ -7,6 +7,7 @@ product_action_playbooks = [
     pt3: [
         install: 'pt.yml',
         upgrade: 'pt_upgrade.yml'
+        pt_with_ps_57: pt_with_ps_57.yml
     ]
 ]
 
@@ -159,6 +160,21 @@ pipeline {
                     }
                     steps {
                         runPlaybook("upgrade")
+                    }
+                }
+
+                stage('Test_ps57_packages') {
+                    agent {
+                        label params.node_to_test
+                    }
+                    when {
+                        beforeAgent true
+                        expression { 
+                            !params.skip_ps57 
+                        } 
+                    }
+                    steps {
+                        runPlaybook("pt_with_ps_57")
                     }
                 }
             }

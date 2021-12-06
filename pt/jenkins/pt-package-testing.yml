@@ -46,3 +46,7 @@
             default: 'https://github.com/eleo007/package-testing.git'
             description: ""
             trim: false
+        - bool:
+            name: skip_ps57
+            default: false
+            description: "Enable to skip ps5.7 packages installation tests"
