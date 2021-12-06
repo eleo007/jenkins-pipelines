@@ -6,8 +6,8 @@ library changelog: false, identifier: 'lib@PT-2018-pt-packagetesting-pxc', retri
 product_action_playbooks = [
     pt3: [
         install: 'pt.yml',
-        upgrade: 'pt_upgrade.yml'
-        pt_with_ps_57: pt_with_ps_57.yml
+        upgrade: 'pt_upgrade.yml',
+        pt_with_ps_57: 'pt_with_ps_57.yml'
     ]
 ]
 
