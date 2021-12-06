@@ -37,3 +37,8 @@
             name: skip_ps57
             default: false
             description: "Enable to skip ps5.7 packages installation tests"
+
+        - bool:
+            name: skip_ps80
+            default: false
+            description: "Enable to skip ps8.0 packages installation tests"
