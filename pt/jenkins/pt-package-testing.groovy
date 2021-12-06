@@ -7,8 +7,7 @@ product_action_playbooks = [
     pt3: [
         install: 'pt.yml',
         upgrade: 'pt_upgrade.yml',
-        pt_with_ps_57: 'pt_with_ps_57.yml',
-        pt_with_ps_80: 'pt_with_ps_80.yml'
+        pt_with_ps: 'pt_with_ps.yml',
     ]
 ]
 
@@ -174,8 +173,11 @@ pipeline {
                             !params.skip_ps57 
                         } 
                     }
+                    environment { 
+                        install_with = 'ps57'
+                    }
                     steps {
-                        runPlaybook("pt_with_ps_57")
+                        runPlaybook("pt_with_ps")
                     }
                 }
 
@@ -189,8 +191,11 @@ pipeline {
                             !params.skip_ps80 
                         } 
                     }
+                    environment { 
+                        install_with = 'ps80'
+                    }
                     steps {
-                        runPlaybook("pt_with_ps_80")
+                        runPlaybook("pt_with_ps")
                     }
                 }
             }
