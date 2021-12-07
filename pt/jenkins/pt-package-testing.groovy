@@ -154,9 +154,9 @@ pipeline {
                     }
                     when {
                         beforeAgent true
-                        expression { 
-                            params.install_repo != 'main' 
-                        } 
+                        expression {
+                            params.install_repo != 'main'
+                        }
                     }
                     steps {
                         runPlaybook("upgrade")
@@ -188,11 +188,49 @@ pipeline {
                     when {
                         beforeAgent true
                         expression { 
-                            !params.skip_ps80 
+                            !params.skip_ps80
                         } 
                     }
                     environment { 
                         install_with = 'ps80'
+                    }
+                    steps {
+                        runPlaybook("pt_with_ps")
+                    }
+                }
+
+                stage('upstream57_and_pt') {
+                    agent {
+                        label params.node_to_test
+                    }
+                    when {
+                        beforeAgent true
+                        expression { 
+                            !params.skip_upstream57
+                            params.node_to_test != 'min-centos-8-x64'
+                            params.node_to_test != 'min-focal-x64'
+                        } 
+                    }
+                    environment { 
+                        install_with = 'upstream57'
+                    }
+                    steps {
+                        runPlaybook("pt_with_ps")
+                    }
+                }
+
+                stage('upstream80_and_pt') {
+                    agent {
+                        label params.node_to_test
+                    }
+                    when {
+                        beforeAgent true
+                        expression { 
+                            !params.skip_upstream80
+                        } 
+                    }
+                    environment { 
+                        install_with = 'upstream80'
                     }
                     steps {
                         runPlaybook("pt_with_ps")

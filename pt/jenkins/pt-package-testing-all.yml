@@ -42,3 +42,11 @@
             name: skip_ps80
             default: false
             description: "Enable to skip ps8.0 packages installation tests"
+        - bool:
+            name: skip_upstream57
+            default: false
+            description: "Enable to skip MySQL 5.7 packages installation tests"
+        - bool:
+            name: skip_upstream80
+            default: false
+            description: "Enable to skip MySQL 8.0 packages installation tests"
