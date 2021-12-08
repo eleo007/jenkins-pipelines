@@ -208,7 +208,40 @@ pipeline {
                         runPlaybook("pt_with_ps")
                     }
                 }
-
+                stage('pxc57_and_pt') {
+                    agent {
+                        label params.node_to_test
+                    }
+                    when {
+                        beforeAgent true
+                        expression {
+                            !params.skip_pxc57
+                        }
+                    }
+                    environment {
+                        install_with = 'pxc57'
+                    }
+                    steps {
+                        runPlaybook("pt_with_ps")
+                    }
+                }
+                stage('pxc80_and_pt') {
+                    agent {
+                        label params.node_to_test
+                    }
+                    when {
+                        beforeAgent true
+                        expression {
+                            !params.skip_pxc80
+                        }
+                    }
+                    environment {
+                        install_with = 'pxc80'
+                    }
+                    steps {
+                        runPlaybook("pt_with_ps")
+                    }
+                }
                 stage('upstream57_and_pt') {
                     agent {
                         label params.node_to_test
@@ -235,7 +268,7 @@ pipeline {
                         beforeAgent true
                         expression { 
                             !params.skip_upstream80
-                        } 
+                        }
                     }
                     environment { 
                         install_with = 'upstream80'

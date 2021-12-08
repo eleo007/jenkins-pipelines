@@ -13,6 +13,8 @@ void runNodeBuild(String node_to_test) {
             string(name: 'git_repo', value: params.git_repo),
             booleanParam(name: 'skip_ps57', value: params.skip_ps57),
             booleanParam(name: 'skip_ps80', value: params.skip_ps80),
+            booleanParam(name: 'skip_pxc57', value: params.skip_pxc57),
+            booleanParam(name: 'skip_pxc80', value: params.skip_pxc80),
             booleanParam(name: 'skip_upstream57', value: params.skip_upstream57),
             booleanParam(name: 'skip_upstream80', value: params.skip_upstream80)
         ],
