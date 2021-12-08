@@ -120,6 +120,16 @@ pipeline {
             name: 'git_repo',
             trim: false
         )
+        booleanParam(
+            defaultValue: false,
+            description: 'skip ps57',
+            name: 'skip_ps57'
+        )
+        booleanParam(
+            defaultValue: false,
+            description: 'skip upstream 57',
+            name: 'skip_upstream57'
+        )
     }
 
     options {
@@ -205,11 +215,9 @@ pipeline {
                     }
                     when {
                         beforeAgent true
-                        expression { 
-                            !params.skip_upstream57
-                            params.node_to_test != 'min-centos-8-x64'
-                            params.node_to_test != 'min-focal-x64'
-                        } 
+                        expression {
+                            !(params.node_to_test =~ /(centos-8|focal|bullseye)/) && !params.skip_upstream57
+                        }
                     }
                     environment { 
                         install_with = 'upstream57'
