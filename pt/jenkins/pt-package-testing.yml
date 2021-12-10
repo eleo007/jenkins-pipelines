@@ -63,6 +63,14 @@
             default: false
             description: "Enable to skip pxc 8.0 packages installation tests"
         - bool:
+            name: skip_psmdb44
+            default: false
+            description: "Enable to skip psmdb 4.4 packages installation tests"
+        - bool:
+            name: skip_psmdb50
+            default: false
+            description: "Enable to skip psmdb 5.0 packages installation tests"
+        - bool:
             name: skip_upstream57
             default: false
             description: "Enable to skip MySQL 5.7 packages installation tests"

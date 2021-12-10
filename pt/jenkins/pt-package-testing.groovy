@@ -208,6 +208,7 @@ pipeline {
                         runPlaybook("pt_with_ps")
                     }
                 }
+
                 stage('pxc57_and_pt') {
                     agent {
                         label params.node_to_test
@@ -215,7 +216,7 @@ pipeline {
                     when {
                         beforeAgent true
                         expression {
-                            !params.skip_pxc57
+                            !(params.node_to_test =~ /(bullseye)/) && !params.skip_upstream57
                         }
                     }
                     environment {
@@ -225,6 +226,7 @@ pipeline {
                         runPlaybook("pt_with_ps")
                     }
                 }
+
                 stage('pxc80_and_pt') {
                     agent {
                         label params.node_to_test
@@ -242,6 +244,43 @@ pipeline {
                         runPlaybook("pt_with_ps")
                     }
                 }
+
+                stage('psmdb44_and_pt') {
+                    agent {
+                        label params.node_to_test
+                    }
+                    when {
+                        beforeAgent true
+                        expression {
+                            !params.skip_psmdb44
+                        }
+                    }
+                    environment {
+                        install_with = 'psmdb44'
+                    }
+                    steps {
+                        runPlaybook("pt_with_ps")
+                    }
+                }
+
+                stage('psmdb50_and_pt') {
+                    agent {
+                        label params.node_to_test
+                    }
+                    when {
+                        beforeAgent true
+                        expression {
+                            !params.skip_psmdb50
+                        }
+                    }
+                    environment {
+                        install_with = 'psmdb50'
+                    }
+                    steps {
+                        runPlaybook("pt_with_ps")
+                    }
+                }
+
                 stage('upstream57_and_pt') {
                     agent {
                         label params.node_to_test

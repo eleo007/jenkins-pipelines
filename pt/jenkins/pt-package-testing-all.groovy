@@ -16,7 +16,9 @@ void runNodeBuild(String node_to_test) {
             booleanParam(name: 'skip_pxc57', value: params.skip_pxc57),
             booleanParam(name: 'skip_pxc80', value: params.skip_pxc80),
             booleanParam(name: 'skip_upstream57', value: params.skip_upstream57),
-            booleanParam(name: 'skip_upstream80', value: params.skip_upstream80)
+            booleanParam(name: 'skip_upstream80', value: params.skip_upstream80),
+            booleanParam(name: 'skip_psmdb44', value: params.skip_psmdb44),
+            booleanParam(name: 'skip_psmdb50', value: params.skip_psmdb50)
         ],
         propagate: true,
         wait: true
