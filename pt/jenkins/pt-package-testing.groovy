@@ -179,9 +179,9 @@ pipeline {
                     }
                     when {
                         beforeAgent true
-                        expression { 
-                            !params.skip_ps57 
-                        } 
+                        expression {
+                            !(params.node_to_test =~ /(bullseye)/) && !params.skip_ps57
+                        }
                     }
                     environment { 
                         install_with = 'ps57'
