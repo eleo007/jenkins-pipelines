@@ -216,7 +216,7 @@ pipeline {
                     when {
                         beforeAgent true
                         expression {
-                            !(params.node_to_test =~ /(bullseye)/) && !params.skip_upstream57
+                            !(params.node_to_test =~ /(bullseye)/) && !params.skip_pxc57
                         }
                     }
                     environment {
