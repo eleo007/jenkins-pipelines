@@ -28,6 +28,13 @@
                 - "main"
                 - "experimental"
             description: 'Choose the repo to install PT packages from'
+        - choice:
+            name: repo_name
+            choices:
+                - pt
+                - tools
+                - original
+            description: 'Percona Toolkit packages are available in 3 repos: pt, tools, original. Packages from each repo should be tested. Please select what repo to use for current run.'
         - string:
             name: git_repo
             default: 'https://github.com/eleo007/package-testing.git'
