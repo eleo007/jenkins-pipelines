@@ -7,7 +7,14 @@ product_action_playbooks = [
     pt3: [
         install: 'pt.yml',
         upgrade: 'pt_upgrade.yml',
-        pt_with_ps: 'pt_with_ps.yml',
+        pt_with_ps57: 'pt_with_ps57.yml',
+        pt_with_ps80: 'pt_with_ps80.yml',
+        pt_with_pxc57: 'pt_with_pxc57.yml',
+        pt_with_pxc80: 'pt_with_pxc80.yml',
+        pt_with_upstream57: 'pt_with_upstream57.yml',
+        pt_with_upstream80: 'pt_with_upstream80.yml',
+        pt_with_psmdb44: 'pt_with_psmdb44.yml',
+        pt_with_psmdb50: 'pt_with_psmdb50.yml'
     ]
 ]
 
@@ -183,11 +190,11 @@ pipeline {
                             !(params.node_to_test =~ /(bullseye)/) && !params.skip_ps57
                         }
                     }
-                    environment { 
-                        install_with = 'ps57'
-                    }
+                    //environment { 
+                    //    install_with = 'ps57'
+                    //}
                     steps {
-                        runPlaybook("pt_with_ps")
+                        runPlaybook("pt_with_ps57")
                     }
                 }
 
@@ -201,11 +208,11 @@ pipeline {
                             !params.skip_ps80
                         } 
                     }
-                    environment { 
-                        install_with = 'ps80'
-                    }
+                    //environment { 
+                    //    install_with = 'ps80'
+                    //}
                     steps {
-                        runPlaybook("pt_with_ps")
+                        runPlaybook("pt_with_ps80")
                     }
                 }
 
@@ -219,11 +226,11 @@ pipeline {
                             !(params.node_to_test =~ /(bullseye)/) && !params.skip_pxc57
                         }
                     }
-                    environment {
-                        install_with = 'pxc57'
-                    }
+                    //environment {
+                    //    install_with = 'pxc57'
+                    //}
                     steps {
-                        runPlaybook("pt_with_ps")
+                        runPlaybook("pt_with_pxc57")
                     }
                 }
 
@@ -237,11 +244,11 @@ pipeline {
                             !params.skip_pxc80
                         }
                     }
-                    environment {
-                        install_with = 'pxc80'
-                    }
+                    //environment {
+                    //    install_with = 'pxc80'
+                    //}
                     steps {
-                        runPlaybook("pt_with_ps")
+                        runPlaybook("pt_with_pxc80")
                     }
                 }
 
@@ -255,11 +262,11 @@ pipeline {
                             !params.skip_psmdb44
                         }
                     }
-                    environment {
-                        install_with = 'psmdb44'
-                    }
+                    //environment {
+                    //    install_with = 'psmdb44'
+                    //}
                     steps {
-                        runPlaybook("pt_with_ps")
+                        runPlaybook("pt_with_psmdb44")
                     }
                 }
 
@@ -273,11 +280,11 @@ pipeline {
                             !params.skip_psmdb50
                         }
                     }
-                    environment {
-                        install_with = 'psmdb50'
-                    }
+                    //environment {
+                    //    install_with = 'psmdb50'
+                    //}
                     steps {
-                        runPlaybook("pt_with_ps")
+                        runPlaybook("pt_with_psmdb50")
                     }
                 }
 
@@ -291,11 +298,11 @@ pipeline {
                             !(params.node_to_test =~ /(centos-8|focal|bullseye)/) && !params.skip_upstream57
                         }
                     }
-                    environment { 
-                        install_with = 'upstream57'
-                    }
+                    //environment { 
+                    //    install_with = 'upstream57'
+                    //}
                     steps {
-                        runPlaybook("pt_with_ps")
+                        runPlaybook("pt_with_upstream57")
                     }
                 }
 
@@ -309,11 +316,11 @@ pipeline {
                             !params.skip_upstream80
                         }
                     }
-                    environment { 
-                        install_with = 'upstream80'
-                    }
+                    //environment { 
+                    //    install_with = 'upstream80'
+                    //}
                     steps {
-                        runPlaybook("pt_with_ps")
+                        runPlaybook("pt_with_upstream80")
                     }
                 }
             }
