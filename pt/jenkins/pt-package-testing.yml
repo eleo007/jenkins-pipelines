@@ -12,7 +12,7 @@
             - git:
                 url: https://github.com/eleo007/jenkins-pipelines.git
                 branches:
-                    - 'PT-2018-pt-packagetesting-pxc'
+                    - 'PT-2018-pt-packagetesting-final'
                 wipe-workspace: true
         lightweight-checkout: true
         script-path: pt/jenkins/pt-package-testing.groovy
