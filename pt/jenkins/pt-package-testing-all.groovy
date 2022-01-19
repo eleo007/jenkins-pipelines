@@ -11,7 +11,6 @@ void runNodeBuild(String node_to_test) {
             string(name: 'install_repo', value: params.install_repo),
             string(name: 'node_to_test', value: node_to_test),
             string(name: 'git_repo', value: params.git_repo),
-            string(name: 'repo_name', value: params.repo_name),
             booleanParam(name: 'skip_ps57', value: params.skip_ps57),
             booleanParam(name: 'skip_ps80', value: params.skip_ps80),
             booleanParam(name: 'skip_pxc57', value: params.skip_pxc57),
@@ -45,6 +44,46 @@ pipeline {
             description: '',
             name: 'git_repo',
             trim: false
+        )
+        booleanParam(
+            name: skip_ps57
+            defaultValue: false
+            description: "Enable to skip ps 5.7 packages installation tests"
+        )
+        booleanParam(
+            name: skip_ps80
+            defaultValue: false
+            description: "Enable to skip ps 8.0 packages installation tests"
+        )
+        booleanParam(
+            name: skip_pxc57
+            defaultValue: false
+            description: "Enable to skip pxc 5.7 packages installation tests"
+        )
+        booleanParam(
+            name: skip_pxc80
+            defaultValue: false
+            description: "Enable to skip pxc 8.0 packages installation tests"
+        )
+        booleanParam(
+            name: skip_psmdb44
+            defaultValue: false
+            description: "Enable to skip psmdb 4.4 packages installation tests"
+        )
+        booleanParam(
+            name: skip_psmdb50
+            defaultValue: false
+            description: "Enable to skip psmdb 5.0 packages installation tests"
+        )
+        booleanParam(
+            name: skip_upstream57
+            defaultValue: false
+            description: "Enable to skip MySQL 5.7 packages installation tests"
+        )
+        booleanParam(
+            name: skip_upstream80
+            defaultValue: false
+            description: "Enable to skip MySQL 8.0 packages installation tests"
         )
     }
 

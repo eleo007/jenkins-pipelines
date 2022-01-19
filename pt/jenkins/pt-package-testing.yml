@@ -33,7 +33,7 @@
                 - 'min-stretch-x64'
                 - 'min-buster-x64'
                 - 'min-bullseye-x64'
-            description: 'Node to run tests'
+            description: 'Node to run tests on'
         - choice:
             name: install_repo
             choices:
@@ -41,13 +41,6 @@
                 - "main"
                 - "experimental"
             description: 'Choose the repo to install pt packages from'
-        - choice:
-            name: repo_name
-            choices:
-                - pt
-                - tools
-                - original
-            description: 'Percona Toolkit packages are available in 3 repos: pt, tools, original. Packages from each repo should be tested. Please select what repo to use for current run.'
         - string:
             name: git_repo
             default: 'https://github.com/eleo007/package-testing.git'
@@ -56,11 +49,11 @@
         - bool:
             name: skip_ps57
             default: false
-            description: "Enable to skip ps5.7 packages installation tests"
+            description: "Enable to skip ps 5.7 packages installation tests"
         - bool:
             name: skip_ps80
             default: false
-            description: "Enable to skip ps8.0 packages installation tests"
+            description: "Enable to skip ps 8.0 packages installation tests"
         - bool:
             name: skip_pxc57
             default: false

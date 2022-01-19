@@ -7,14 +7,7 @@ product_action_playbooks = [
     pt3: [
         install: 'pt.yml',
         upgrade: 'pt_upgrade.yml',
-        pt_with_ps57: 'pt_with_ps57.yml',
-        pt_with_ps80: 'pt_with_ps80.yml',
-        pt_with_pxc57: 'pt_with_pxc57.yml',
-        pt_with_pxc80: 'pt_with_pxc80.yml',
-        pt_with_upstream57: 'pt_with_upstream57.yml',
-        pt_with_upstream80: 'pt_with_upstream80.yml',
-        pt_with_psmdb44: 'pt_with_psmdb44.yml',
-        pt_with_psmdb50: 'pt_with_psmdb50.yml'
+        pt_with_products: 'pt_with_products.yml'
     ]
 ]
 
@@ -61,7 +54,7 @@ node_setups = [
     "min-centos-8-x64": setup_centos_package_tests,
     "min-xenial-x64": setup_ubuntu_package_tests,
     "min-bionic-x64": setup_ubuntu_package_tests,
-    "min-focal-x64": setup_ubuntu_package_tests,
+    "min-focal-x64": setup_ubuntu_package_tests
 ]
 
 void setup_package_tests() {
@@ -74,7 +67,7 @@ void runPlaybook(String action_to_test) {
 
     sh '''
         echo Start: \$(date -R)
-        git clone -b PT-2018-pt-packagetesting-pxc --depth 1 "${git_repo}"
+        git clone -b PT-2018-pt-packagetesting-final --depth 1 "${git_repo}"
     '''
 
     setup_package_tests()
@@ -113,7 +106,7 @@ pipeline {
                 'min-buster-x64',
                 'min-bullseye-x64'
             ],
-            description: 'Node to run tests',
+            description: 'Node to run tests on',
             name: 'node_to_test'
         )
         choice(
@@ -128,14 +121,44 @@ pipeline {
             trim: false
         )
         booleanParam(
-            defaultValue: false,
-            description: 'skip ps57',
-            name: 'skip_ps57'
+            name: skip_ps57
+            defaultValue: false
+            description: "Enable to skip ps 5.7 packages installation tests"
         )
         booleanParam(
-            defaultValue: false,
-            description: 'skip upstream 57',
-            name: 'skip_upstream57'
+            name: skip_ps80
+            defaultValue: false
+            description: "Enable to skip ps 8.0 packages installation tests"
+        )
+        booleanParam(
+            name: skip_pxc57
+            defaultValue: false
+            description: "Enable to skip pxc 5.7 packages installation tests"
+        )
+        booleanParam(
+            name: skip_pxc80
+            defaultValue: false
+            description: "Enable to skip pxc 8.0 packages installation tests"
+        )
+        booleanParam(
+            name: skip_psmdb44
+            defaultValue: false
+            description: "Enable to skip psmdb 4.4 packages installation tests"
+        )
+        booleanParam(
+            name: skip_psmdb50
+            defaultValue: false
+            description: "Enable to skip psmdb 5.0 packages installation tests"
+        )
+        booleanParam(
+            name: skip_upstream57
+            defaultValue: false
+            description: "Enable to skip MySQL 5.7 packages installation tests"
+        )
+        booleanParam(
+            name: skip_upstream80
+            defaultValue: false
+            description: "Enable to skip MySQL 8.0 packages installation tests"
         )
     }
 
@@ -190,11 +213,11 @@ pipeline {
                             !(params.node_to_test =~ /(bullseye)/) && !params.skip_ps57
                         }
                     }
-                    //environment { 
-                    //    install_with = 'ps57'
-                    //}
+                    environment {
+                        install_with = 'ps57'
+                    }
                     steps {
-                        runPlaybook("pt_with_ps57")
+                        runPlaybook("pt_with_products")
                     }
                 }
 
@@ -204,15 +227,15 @@ pipeline {
                     }
                     when {
                         beforeAgent true
-                        expression { 
+                        expression {
                             !params.skip_ps80
                         } 
                     }
-                    //environment { 
-                    //    install_with = 'ps80'
-                    //}
+                    environment {
+                        install_with = 'ps80'
+                    }
                     steps {
-                        runPlaybook("pt_with_ps80")
+                        runPlaybook("pt_with_products")
                     }
                 }
 
@@ -226,11 +249,11 @@ pipeline {
                             !(params.node_to_test =~ /(bullseye)/) && !params.skip_pxc57
                         }
                     }
-                    //environment {
-                    //    install_with = 'pxc57'
-                    //}
+                    environment {
+                        install_with = 'pxc57'
+                    }
                     steps {
-                        runPlaybook("pt_with_pxc57")
+                        runPlaybook("pt_with_products")
                     }
                 }
 
@@ -244,11 +267,11 @@ pipeline {
                             !params.skip_pxc80
                         }
                     }
-                    //environment {
-                    //    install_with = 'pxc80'
-                    //}
+                    environment {
+                        install_with = 'pxc80'
+                    }
                     steps {
-                        runPlaybook("pt_with_pxc80")
+                        runPlaybook("pt_with_products")
                     }
                 }
 
@@ -262,11 +285,11 @@ pipeline {
                             !params.skip_psmdb44
                         }
                     }
-                    //environment {
-                    //    install_with = 'psmdb44'
-                    //}
+                    environment {
+                        install_with = 'psmdb44'
+                    }
                     steps {
-                        runPlaybook("pt_with_psmdb44")
+                        runPlaybook("pt_with_products")
                     }
                 }
 
@@ -280,11 +303,11 @@ pipeline {
                             !params.skip_psmdb50
                         }
                     }
-                    //environment {
-                    //    install_with = 'psmdb50'
-                    //}
+                    environment {
+                        install_with = 'psmdb50'
+                    }
                     steps {
-                        runPlaybook("pt_with_psmdb50")
+                        runPlaybook("pt_with_products")
                     }
                 }
 
@@ -298,11 +321,11 @@ pipeline {
                             !(params.node_to_test =~ /(centos-8|focal|bullseye)/) && !params.skip_upstream57
                         }
                     }
-                    //environment { 
-                    //    install_with = 'upstream57'
-                    //}
+                    environment {
+                        install_with = 'upstream57'
+                    }
                     steps {
-                        runPlaybook("pt_with_upstream57")
+                        runPlaybook("pt_with_products")
                     }
                 }
 
@@ -312,15 +335,15 @@ pipeline {
                     }
                     when {
                         beforeAgent true
-                        expression { 
+                        expression {
                             !params.skip_upstream80
                         }
                     }
-                    //environment { 
-                    //    install_with = 'upstream80'
-                    //}
+                    environment {
+                        install_with = 'upstream80'
+                    }
                     steps {
-                        runPlaybook("pt_with_upstream80")
+                        runPlaybook("pt_with_products")
                     }
                 }
             }
