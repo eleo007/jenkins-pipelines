@@ -46,35 +46,35 @@ pipeline {
             trim: false
         )
         booleanParam(
-            name: skip_ps57,
+            name: 'skip_ps57',
             description: "Enable to skip ps 5.7 packages installation tests"
         )
         booleanParam(
-            name: skip_ps80,
+            name: 'skip_ps80',
             description: "Enable to skip ps 8.0 packages installation tests"
         )
         booleanParam(
-            name: skip_pxc57,
+            name: 'skip_pxc57',
             description: "Enable to skip pxc 5.7 packages installation tests"
         )
         booleanParam(
-            name: skip_pxc80,
+            name: 'skip_pxc80',
             description: "Enable to skip pxc 8.0 packages installation tests"
         )
         booleanParam(
-            name: skip_psmdb44,
+            name: 'skip_psmdb44',
             description: "Enable to skip psmdb 4.4 packages installation tests"
         )
         booleanParam(
-            name: skip_psmdb50,
+            name: 'skip_psmdb50',
             description: "Enable to skip psmdb 5.0 packages installation tests"
         )
         booleanParam(
-            name: skip_upstream57,
+            name: 'skip_upstream57',
             description: "Enable to skip MySQL 5.7 packages installation tests"
         )
         booleanParam(
-            name: skip_upstream80,
+            name: 'skip_upstream80',
             description: "Enable to skip MySQL 8.0 packages installation tests"
         )
     }
