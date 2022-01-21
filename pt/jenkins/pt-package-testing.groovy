@@ -81,7 +81,7 @@ void runPlaybook(String action_to_test) {
         --limit 127.0.0.1 \
         ${playbook_path}
 
-        echo Start: \$(date -R)
+        echo Finish: \$(date -R)
     """
 }
 
