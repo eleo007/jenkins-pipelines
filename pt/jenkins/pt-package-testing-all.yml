@@ -33,6 +33,11 @@
             default: 'https://github.com/eleo007/package-testing.git'
             description: ""
             trim: false
+        - string:
+            name: git_branch
+            default: 'master'
+            description: ""
+            trim: false
         - bool:
             name: skip_ps57
             default: false

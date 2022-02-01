@@ -67,7 +67,7 @@ void runPlaybook(String action_to_test) {
 
     sh '''
         echo Start: \$(date -R)
-        git clone -b PT-2018-pt-packagetesting-final --depth 1 "${git_repo}"
+        git clone -b "${git_branch}" --depth 1 "${git_repo}"
     '''
 
     setup_package_tests()
@@ -118,6 +118,12 @@ pipeline {
             defaultValue: 'https://github.com/eleo007/package-testing.git',
             description: '',
             name: 'git_repo',
+            trim: false
+        )
+        string(
+            defaultValue: 'master',
+            description: '',
+            name: 'git_branch',
             trim: false
         )
         booleanParam(
