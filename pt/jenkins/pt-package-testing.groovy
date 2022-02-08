@@ -227,7 +227,7 @@ pipeline {
                         beforeAgent true
                         expression {
                             !params.skip_ps80
-                        } 
+                        }
                     }
                     environment {
                         install_with = 'ps80'
