@@ -21,11 +21,11 @@ setup_centos_package_tests = { ->
 
 setup_centos8_package_tests = { ->
     sh '''
-        sed -i "s/mirror\.centos\.org/vault\.centos\.org/g;s/\#baseurl=/baseurl=/g;s/mirrorlist=/#mirrorlist=/g" /etc/yum.repos.d/CentOS*.repo
+        sed -i "s/mirror\\.centos\\.org/vault\\.centos\\.org/g;s/\\#baseurl=/baseurl=/g;s/mirrorlist=/#mirrorlist=/g" /etc/yum.repos.d/CentOS*.repo
         sudo yum install -y epel-release
         sudo yum -y update
         sudo yum install -y ansible
-        sed -i "s/mirror\.centos\.org/vault\.centos\.org/g;s/\#baseurl=/baseurl=/g;s/mirrorlist=/#mirrorlist=/g" /etc/yum.repos.d/CentOS*.repo
+        sed -i "s/mirror\\.centos\\.org/vault\\.centos\\.org/g;s/\\#baseurl=/baseurl=/g;s/mirrorlist=/#mirrorlist=/g" /etc/yum.repos.d/CentOS*.repo
     '''
 }
 
