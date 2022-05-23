@@ -1,6 +1,6 @@
-library changelog: false, identifier: 'lib@master', retriever: modernSCM([
+library changelog: false, identifier: 'lib@pt-ps-57-eleonora', retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/Percona-Lab/jenkins-pipelines.git'
+    remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ]) _
 
 List all_nodes = [
@@ -24,7 +24,7 @@ if (params.node_to_test == "all") {
 
 void runNodeBuild(String node_to_test) {
     build(
-        job: 'package-testing-ps57-build',
+        job: 'package-testing-ps57-build-eleonora',
         parameters: [
             string(name: "product_to_test", value: product_to_test),
             string(name: "install_repo", value: params.install_repo),

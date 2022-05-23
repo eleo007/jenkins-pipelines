@@ -1,5 +1,5 @@
 - job:
-    name: package-testing-ps57
+    name: package-testing-ps57-eleonora
     project-type: pipeline
     description: |
         Do not edit this job through the web!
@@ -12,9 +12,9 @@
     pipeline-scm:
         scm:
             - git:
-                url: https://github.com/Percona-Lab/jenkins-pipelines.git
+                url: https://github.com/eleo007/jenkins-pipelines.git
                 branches:
-                    - 'master'
+                    - 'pt-ps-57-eleonora'
                 wipe-workspace: true
         lightweight-checkout: true
         script-path: ps/jenkins/package-testing-ps-5.7.groovy
