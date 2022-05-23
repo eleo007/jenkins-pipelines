@@ -7,7 +7,7 @@ List all_nodes = [
     "min-buster-x64",
     "min-centos-7-x64",
     "min-centos-8-x64",
-    "min-ol-8-x64"
+    "min-ol-8-x64",
     "min-bionic-x64",
     "min-focal-x64",
     "min-amazon-2-x64",
