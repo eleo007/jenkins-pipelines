@@ -5,7 +5,7 @@ library changelog: false, identifier: 'lib@pt-ps-57-eleonora', retriever: modern
 
 setup_rhel_package_tests = { ->
     sh '''
-        sudo yum install -y epel-release
+        sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
         sudo yum -y update
         sudo yum install -y ansible git wget
     '''
