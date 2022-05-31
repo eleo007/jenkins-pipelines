@@ -95,7 +95,7 @@ void runPlaybook(String action_to_test) {
     setup_package_tests()
 
     sh '''
-        git clone --depth 1 https://github.com/Percona-QA/package-testing
+        git clone --branch ol8-ps57 --depth 1 https://github.com/eleo007/package-testing
     '''
 
     sh """
