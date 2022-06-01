@@ -5,6 +5,15 @@ library changelog: false, identifier: 'lib@pt-ps-57-eleonora', retriever: modern
 
 setup_rhel_package_tests = { ->
     sh '''
+        sudo yum install -y epel-release
+        sudo yum -y update
+        sudo yum install -y ansible git wget
+    '''
+}
+
+//Use Fedora epel-release for OL8 till PS-8268 is fixed
+setup_rhel_8_package_tests = { ->
+    sh '''
         sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
         sudo yum -y update
         sudo yum install -y ansible git wget
@@ -39,7 +48,7 @@ node_setups = [
     "min-buster-x64": setup_debian_package_tests,
     "min-centos-7-x64": setup_rhel_package_tests,
     "min-centos-8-x64": setup_rhel_package_tests,
-    "min-ol-8-x64": setup_rhel_package_tests,
+    "min-ol-8-x64": setup_rhel_8_package_tests,
     "min-bionic-x64": setup_ubuntu_package_tests,
     "min-focal-x64": setup_ubuntu_package_tests,
     "min-amazon-2-x64": setup_amazon_package_tests,
