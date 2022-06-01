@@ -6,7 +6,6 @@ library changelog: false, identifier: 'lib@pt-ps-57-eleonora', retriever: modern
 List all_nodes = [
     "min-buster-x64",
     "min-centos-7-x64",
-    "min-centos-8-x64",
     "min-ol-8-x64",
     "min-bionic-x64",
     "min-focal-x64",
@@ -98,18 +97,6 @@ pipeline {
 
                     steps {
                         runNodeBuild("min-centos-7-x64")
-                    }
-                }
-
-                stage("Centos 8") {
-                    when {
-                        expression {
-                            nodes_to_test.contains("min-centos-8-x64")
-                        }
-                    }
-
-                    steps {
-                        runNodeBuild("min-centos-8-x64")
                     }
                 }
 
