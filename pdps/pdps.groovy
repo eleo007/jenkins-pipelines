@@ -133,11 +133,11 @@ pipeline {
     post {
         always {
             script {
-                if (env.DESTROY_ENV == "yes") {
-                    moleculeExecuteActionWithScenario(env.MOLECULE_DIR, "destroy", env.PLATFORM)
+                if (env.DESTROY_ENV == "no") {
+                    echo "Keeping test environment. Please remove EC2 instance after checks."
                 }
                 else {
-                    echo "Keeping test environment. Please remove EC2 instance after checks."
+                    moleculeExecuteActionWithScenario(env.MOLECULE_DIR, "destroy", env.PLATFORM)
                 }
             }
         }
