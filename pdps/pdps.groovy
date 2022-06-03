@@ -71,8 +71,8 @@ pipeline {
             name: 'DESTROY_ENV',
             description: 'Destroy VM after tests',
             choices: [
-                'no',
-                'yes'
+                'yes',
+                'no'
             ]
         )
     }
