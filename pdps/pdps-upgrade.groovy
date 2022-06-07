@@ -1,6 +1,6 @@
-library changelog: false, identifier: "lib@master", retriever: modernSCM([
+library changelog: false, identifier: "lib@DISTMYSQL-178-pdps", retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/Percona-Lab/jenkins-pipelines.git'
+    remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ])
 
 pipeline {
@@ -46,7 +46,7 @@ pipeline {
             name: 'VERSION'
         )
         string(
-            defaultValue: 'master',
+            defaultValue: 'DISTMYSQL-178-pdps',
             description: 'Branch for testing repository',
             name: 'TESTING_BRANCH')
         string(
@@ -93,7 +93,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 deleteDir()
-                git poll: false, branch: TESTING_BRANCH, url: 'https://github.com/Percona-QA/package-testing.git'
+                git poll: false, branch: TESTING_BRANCH, url: 'https://github.com/eleo007/package-testing.git'
             }
         }
         stage ('Prepare') {
