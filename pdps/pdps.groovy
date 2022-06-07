@@ -58,7 +58,7 @@ pipeline {
             choices: pdpsScenarios()
         )
         string(
-            defaultValue: 'master',
+            defaultValue: 'DISTMYSQL-178-pdsm',
             description: 'Branch for package-testing repository',
             name: 'TESTING_BRANCH'
         )
