@@ -46,9 +46,10 @@ pipeline {
             name: 'VERSION'
         )
         string(
-            defaultValue: 'DISTMYSQL-178-pdps',
+            defaultValue: 'DISTMYSQL-178-pdsm',
             description: 'Branch for testing repository',
-            name: 'TESTING_BRANCH')
+            name: 'TESTING_BRANCH'
+        )
         string(
             defaultValue: '2.3.2',
             description: 'Updated Proxysql version',

@@ -28,7 +28,7 @@ pipeline {
             name: 'VERSION'
         )
         string(
-            defaultValue: 'DISTMYSQL-178-pdps',
+            defaultValue: 'DISTMYSQL-178-pdsm',
             description: 'Branch for package-testing repository',
             name: 'TESTING_BRANCH'
         )
