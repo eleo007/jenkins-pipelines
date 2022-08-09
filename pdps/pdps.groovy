@@ -55,7 +55,7 @@ pipeline {
         choice(
             name: 'SCENARIO',
             description: 'Scenario for test',
-            choices: ['pdps', 'setuppdps']
+            choices: ['pdps', 'pdps_setup']
         )
         string(
             defaultValue: 'master',
