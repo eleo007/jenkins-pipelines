@@ -1,0 +1,14 @@
+- job:
+    name: pdps-parallel-eleonora
+    project-type: pipeline
+    description: |
+        Do not edit this job through the web!
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/eleo007/jenkins-pipelines.git
+            branches:
+            - 'DISTMYSQL-213-repo80'
+            wipe-workspace: false
+      lightweight-checkout: true
+      script-path: pdps/pdps-parallel-eleonora.groovy
