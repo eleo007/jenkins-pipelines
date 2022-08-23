@@ -53,7 +53,8 @@ pipeline {
         string(
             defaultValue: 'DISTMYSQL-213-repo80',
             description: 'Branch for testing repository',
-            name: 'TESTING_BRANCH')
+            name: 'TESTING_BRANCH'
+        )
   }
   options {
           withCredentials(moleculePdpsJenkinsCreds())
@@ -128,6 +129,7 @@ pipeline {
                         string(name: 'PXB_VERSION', value: "${env.PXB_VERSION}"),
                         string(name: 'PT_VERSION', value: "${env.PT_VERSION}"),
                         string(name: 'ORCHESTRATOR_VERSION', value: "${env.ORCHESTRATOR_VERSION}"),
+                        booleanParam(name: 'MAJOR_REPO', value: true)
                         ]
                     }
                     catch (err) {
