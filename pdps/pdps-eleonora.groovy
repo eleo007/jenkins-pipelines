@@ -67,6 +67,10 @@ pipeline {
             description: 'Tests will be run from branch of  https://github.com/percona/orchestrator',
             name: 'ORCHESTRATOR_TESTS_VERSION'
         )
+        booleanParam(
+            name: 'MAJOR_REPO', 
+            description: "Enable to use major (pdps-8.0) repo instead of pdps-8.0.XX"
+        )
         choice(
             name: 'DESTROY_ENV',
             description: 'Destroy VM after tests',
@@ -74,10 +78,6 @@ pipeline {
                 'yes',
                 'no'
             ]
-        )
-        booleanParam(
-            name: 'MAJOR_REPO', 
-            description: "Enable to use major (pdps-8.0) repo instead of pdps-8.0.XX"
         )
     }
     options {
