@@ -127,7 +127,34 @@ pipeline {
                 }
             }
         }
-        stage ('Test setup') {
+        stage ('Test setup: minor repo') {
+            when {
+                expression { env.TO_REPO == 'release' }
+            }
+            steps {
+                script {
+                    try {
+                        build job: 'pdps-eleonora', parameters: [
+                        string(name: 'PLATFORM', value: "${env.PLATFORM}"),
+                        string(name: 'REPO', value: "${env.TO_REPO}"),
+                        string(name: 'VERSION', value: "${env.VERSION}"),
+                        string(name: 'TESTING_BRANCH', value: "${env.TESTING_BRANCH}"),
+                        string(name: 'SCENARIO', value: "pdps-setup"),
+                        string(name: 'PROXYSQL_VERSION', value: "${env.PROXYSQL_VERSION}"),
+                        string(name: 'PXB_VERSION', value: "${env.PXB_VERSION}"),
+                        string(name: 'PT_VERSION', value: "${env.PT_VERSION}"),
+                        string(name: 'ORCHESTRATOR_VERSION', value: "${env.ORCHESTRATOR_VERSION}"),
+                        booleanParam(name: 'MAJOR_REPO', value: false)
+                        ]
+                    }
+                    catch (err) {
+                        currentBuild.result = "FAILURE"
+                        echo "Stage 'Test setup' failed, but we continue"
+                    }
+                }
+            }
+        }
+        stage ('Test setup: major repo') {
             when {
                 expression { env.TO_REPO == 'release' }
             }
