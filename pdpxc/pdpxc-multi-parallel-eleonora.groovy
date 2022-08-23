@@ -1,6 +1,6 @@
-library changelog: false, identifier: "lib@master", retriever: modernSCM([
+library changelog: false, identifier: "lib@DISTMYSQL-213-repo80", retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/Percona-Lab/jenkins-pipelines.git'
+    remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ])
 
 pipeline {
@@ -22,11 +22,11 @@ pipeline {
             choices: repoList()
         )
         string(
-            defaultValue: '8.0.28',
+            defaultValue: '8.0.27',
             description: 'From this version pdpxc will be updated',
             name: 'FROM_VERSION')
         string(
-            defaultValue: '8.0.29',
+            defaultValue: '8.0.28',
             description: 'To this version pdpxc will be updated',
             name: 'VERSION'
         )
@@ -36,22 +36,22 @@ pipeline {
             name: 'PROXYSQL_VERSION'
          )
         string(
-            defaultValue: '2.3.10',
+            defaultValue: '2.5.6',
             description: 'HAProxy version for test',
             name: 'HAPROXY_VERSION'
          )
         string(
-            defaultValue: '8.0.23',
+            defaultValue: '8.0.28',
             description: 'PXB version for test',
             name: 'PXB_VERSION'
          )
         string(
-            defaultValue: '3.3.1',
+            defaultValue: '3.4.0',
             description: 'Percona toolkit version for test',
             name: 'PT_VERSION'
          )
         string(
-            defaultValue: 'master',
+            defaultValue: 'DISTMYSQL-213-repo80',
             description: 'Branch for testing repository',
             name: 'TESTING_BRANCH')
   }
