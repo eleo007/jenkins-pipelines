@@ -58,7 +58,7 @@ pipeline {
             choices: pdpsScenarios()
         )
         string(
-            defaultValue: 'master',
+            defaultValue: 'DISTMYSQL-213-repo80',
             description: 'Branch for package-testing repository',
             name: 'TESTING_BRANCH'
         )
@@ -77,7 +77,7 @@ pipeline {
         )
         booleanParam(
             name: 'MAJOR_REPO', 
-            description: "Enable to use pdps-8.0 repo instead of pdps-8.0.XX"
+            description: "Enable to use major (pdps-8.0) repo instead of pdps-8.0.XX"
         )
     }
     options {
@@ -95,7 +95,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 deleteDir()
-                git poll: false, branch: TESTING_BRANCH, url: 'https://github.com/Percona-QA/package-testing.git'
+                git poll: false, branch: TESTING_BRANCH, url: 'https://github.com/eleo007/package-testing.git'
             }
         }
         stage ('Prepare') {
