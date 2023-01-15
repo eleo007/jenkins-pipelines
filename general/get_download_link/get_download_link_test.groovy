@@ -36,7 +36,7 @@ pipeline {
                     sudo apt install git
                     git clone https://github.com/sstephenson/bats.git
                     cd bats
-                    ./install.sh /usr/local
+                    sudo ./install.sh /usr/local
                     git clone $script_repo
                     cd percona-qa
                     /usr/local/bin/bats get_download_link_test.bats
