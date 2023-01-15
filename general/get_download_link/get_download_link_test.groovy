@@ -1,6 +1,6 @@
-library changelog: false, identifier: 'lib@master', retriever: modernSCM([
+library changelog: false, identifier: 'lib@hackday_download_link', retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/Percona-Lab/jenkins-pipelines.git'
+    remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ]) _
 
 pipeline {
@@ -16,7 +16,7 @@ pipeline {
         string(
             defaultValue: 'https://github.com/eleo007/percona-qa.git',
             description: '',
-            name: 'git_repo',
+            name: 'script_repo',
             trim: false
         )
     }
