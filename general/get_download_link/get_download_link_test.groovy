@@ -5,7 +5,7 @@ library changelog: false, identifier: 'lib@hackday_download_link', retriever: mo
 
 pipeline {
     agent {
-        label min-focal-x64
+        label 'min-focal-x64'
     }
 
     options {
