@@ -33,17 +33,20 @@ pipeline {
                 script {
                     currentBuild.displayName = "#${BUILD_NUMBER}"
                 }
-            }
-        }
 
-        stage("Test") {
-            steps {
                 sh '''
                     sudo apt install git
                     git clone https://github.com/sstephenson/bats.git
                     cd bats
                     sudo ./install.sh /usr/local
                     git clone --depth 1 $script_repo -b $repo_branch
+                '''
+            }
+        }
+
+        stage("Test") {
+            steps {
+                sh '''
                     cd percona-qa
                     /usr/local/bin/bats get_download_link_test.bats
                 '''
