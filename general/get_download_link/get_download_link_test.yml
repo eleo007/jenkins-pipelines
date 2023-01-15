@@ -1,0 +1,26 @@
+- job:
+    name: get_donload_link_test
+    project-type: pipeline
+    description: |
+        Do not edit this job through the web!
+    properties:
+        - build-discarder:
+            artifact-days-to-keep: -1
+            artifact-num-to-keep: 10
+            days-to-keep: -1
+            num-to-keep: 10
+    pipeline-scm:
+        scm:
+            - git:
+                url: https://github.com/eleo007/jenkins-pipelines.git
+                branches:
+                    - 'hackday_download_link'
+                wipe-workspace: true
+        lightweight-checkout: true
+        script-path: general/get_download_link/get_download_link_test.groovy
+    parameters:
+        - string:
+            name: script_repo
+            default: 'https://github.com/eleo007/percona-qa.git'
+            description: ""
+            trim: false
