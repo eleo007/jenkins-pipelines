@@ -24,3 +24,8 @@
             default: 'https://github.com/eleo007/percona-qa.git'
             description: ""
             trim: false
+        - string:
+            name: repo_branch
+            default: 'hackday_download_bats'
+            description: ""
+            trim: false

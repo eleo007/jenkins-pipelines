@@ -19,6 +19,12 @@ pipeline {
             name: 'script_repo',
             trim: false
         )
+        string(
+            defaultValue: 'hackday_download_bats',
+            description: '',
+            name: 'repo_branch',
+            trim: false
+        )
     }
 
     stages {
@@ -37,7 +43,7 @@ pipeline {
                     git clone https://github.com/sstephenson/bats.git
                     cd bats
                     sudo ./install.sh /usr/local
-                    git clone --depth 1 $script_repo
+                    git clone --depth 1 $script_repo -b $repo_branch
                     cd percona-qa
                     /usr/local/bin/bats get_download_link_test.bats
                 '''
