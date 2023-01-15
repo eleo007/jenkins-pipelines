@@ -37,7 +37,7 @@ pipeline {
                     git clone https://github.com/sstephenson/bats.git
                     cd bats
                     sudo ./install.sh /usr/local
-                    git clone $script_repo
+                    git clone --depth 1 $script_repo
                     cd percona-qa
                     /usr/local/bin/bats get_download_link_test.bats
                 '''
