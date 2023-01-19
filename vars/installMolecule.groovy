@@ -1,8 +1,8 @@
 def call() {
         sh """
             sudo yum install -y gcc python3-pip python3-devel libselinux-python3
-            sudo yum install epel-release
-            sudo yum install ansible
+            sudo yum install -y epel-release
+            sudo yum install -y ansible
             python3 -m venv virtenv
             . virtenv/bin/activate
             python3 --version
