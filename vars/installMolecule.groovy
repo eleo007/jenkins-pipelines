@@ -9,5 +9,6 @@ def call() {
             python3 -m pip install --upgrade setuptools
             python3 -m pip install --upgrade setuptools-rust
             python3 -m pip install --upgrade molecule==3.3.0 testinfra pytest molecule-ec2==0.3 molecule[ansible] boto3 boto
+            ansible-galaxy collection install amazon.aws
         """
 }
