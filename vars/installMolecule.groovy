@@ -1,9 +1,9 @@
 def call() {
         sh """
             sudo yum install -y gcc python3-pip python3-devel libselinux-python3
-#            sudo yum install -y epel-release
-#            sudo yum install -y ansible
-            sudo yum remove ansible -y
+            sudo yum install -y epel-release
+            sudo yum install -y ansible
+            #sudo yum remove ansible -y
             python3 -m venv virtenv
             . virtenv/bin/activate
             python3 --version
@@ -11,6 +11,6 @@ def call() {
             python3 -m pip install --upgrade setuptools
             python3 -m pip install --upgrade setuptools-rust
             python3 -m pip install --upgrade molecule==3.3.0 testinfra pytest molecule-ec2==0.3 molecule[ansible] boto3 boto
-#            ansible-galaxy collection install amazon.aws
+            ansible-galaxy collection install amazon.aws
         """
 }
