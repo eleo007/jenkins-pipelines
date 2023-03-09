@@ -1,4 +1,4 @@
-library changelog: false, identifier: 'libps8032_kmip@', retriever: modernSCM([
+library changelog: false, identifier: 'lib@ps8032_kmip', retriever: modernSCM([
     $class: 'GitSCMSource',
     remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ]) _
