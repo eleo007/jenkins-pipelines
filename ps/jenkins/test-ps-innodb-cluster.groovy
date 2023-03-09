@@ -16,7 +16,7 @@ void installDependencies() {
 
     sh '''
         rm -rf package-testing
-        git clone https://github.com/Percona-QA/package-testing
+        git clone https://github.com/eleo007/package-testing -b ps8032_router
     '''
 }
 
