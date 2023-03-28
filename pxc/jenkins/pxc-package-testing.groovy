@@ -1,6 +1,6 @@
-library changelog: false, identifier: 'lib@master', retriever: modernSCM([
+library changelog: false, identifier: 'lib@set_minor_version', retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/Percona-Lab/jenkins-pipelines.git'
+    remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ]) _
 
 def runMoleculeAction(String action, String product_to_test, String scenario, String param_test_type, String test_repo, String version_check) {
@@ -372,6 +372,10 @@ pipeline {
             choices: ["original","pxc57" ],
             description: "PXC-5.7 packages are located in 2 repos: pxc-57 and original and both should be tested. Choose which repo to use for test."
         )
+        string(
+            defaultValue: '',
+            description: 'From this version PXC will be updated. Latest available package is used with default (empty) value.',
+            name: 'minor_version')
     }
 
     stages {
@@ -399,7 +403,7 @@ pipeline {
                         sudo yum install -y epel-release 
                         sudo yum install -y git jq
                         rm -rf package-testing                    
-                        git clone https://github.com/Percona-QA/package-testing --branch master
+                        git clone https://github.com/eleo007/package-testing --branch set_minor_version
                     '''
             }
         }
