@@ -1,6 +1,6 @@
-library changelog: false, identifier: 'lib@master', retriever: modernSCM([
+library changelog: false, identifier: 'lib@set_minor_version', retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/Percona-Lab/jenkins-pipelines.git'
+    remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ]) _
 
 setup_rhel_package_tests = { ->
@@ -102,7 +102,7 @@ void runPlaybook(String action_to_test) {
     setup_package_tests()
 
     sh '''
-        git clone --depth 1 https://github.com/Percona-QA/package-testing
+        git clone --depth 1 https://github.com/eleo007/package-testing -b set_minor_version
     '''
 
     sh """
@@ -160,6 +160,11 @@ pipeline {
             name: "install_mysql_shell",
             choices: ["yes", "no"],
             description: "install and check mysql-shell for ps80"
+        )
+        string(
+            defaultValue: '',
+            description: 'From this version PS will be updated. Latest available package is used with default (empty) value.',
+            name: 'minor_version)'
         )
         
     }
