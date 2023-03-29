@@ -110,6 +110,7 @@ void runPlaybook(String action_to_test) {
         export client_to_test="ps80"
         export check_warning="\${check_warnings}"
         export install_mysql_shell="\${install_mysql_shell}"
+        export minor_version="\${minor_version}"
         ansible-playbook \
         --connection=local \
         --inventory 127.0.0.1, \
@@ -164,7 +165,7 @@ pipeline {
         string(
             defaultValue: '',
             description: 'From this version PS will be updated. Latest available package is used with default (empty) value.',
-            name: 'minor_version)'
+            name: 'minor_version'
         )
         
     }
