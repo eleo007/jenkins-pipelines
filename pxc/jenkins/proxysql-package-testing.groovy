@@ -77,7 +77,6 @@ void runPlaybook(String action_to_test) {
         export install_repo="\${install_repo}"
         export client_to_test="\${client_to_test}"
         export repo_for_client_to_test="\${repo_for_client_to_test}"
-        export minor_version="\${minor_version}"
 
         ansible-playbook \
         --connection=local \
