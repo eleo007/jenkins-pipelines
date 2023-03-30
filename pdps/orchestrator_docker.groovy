@@ -10,12 +10,6 @@ pipeline {
   }
 
   parameters {
-    choice(name: 'DOCKER_ACC', choices: ['percona','perconalab'], description: 'Docker repo to use: percona or perconalab')
-    string(name: 'PS_VERSION', defaultValue: '8.0.26-16', description: 'Full PS version')
-    string(name: 'PS_REVISION', defaultValue: '3d64165', description: 'Short git hash for release')
-  }
-
-  parameters {
     choice(
       name: 'DOCKER_ACC',
       description: 'Docker repo to use: percona or perconalab',
