@@ -29,7 +29,12 @@ pipeline {
       name: 'PS_VERSION'
     )
     string(
-      defaultValue: 'master',
+    defaultValue: 'https://github.com/eleo007/package-testing.git',
+    description: 'Repo for package-testing repository',
+    name: 'TESTING_REPO'
+   )
+    string(
+      defaultValue: 'DISTMYSQL-278_orch_docker_new',
       description: 'Branch for package-testing repository',
       name: 'TESTING_BRANCH'
     )
@@ -47,7 +52,7 @@ pipeline {
             export PATH=${PATH}:~/.local/bin
             sudo yum install -y python3 python3-pip
             rm -rf package-testing
-            git clone https://github.com/Percona-QA/package-testing.git -b ${TESTING_BRANCH} --depth 1
+            git clone ${TESTING_REPO} -b ${TESTING_BRANCH} --depth 1
             cd package-testing/docker-image-tests/orchestrator
             pip3 install --user -r requirements.txt
             ./run.sh
