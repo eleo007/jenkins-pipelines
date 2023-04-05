@@ -26,7 +26,7 @@ pipeline {
     string(
       defaultValue: '8.0.32-24',
       description: 'Full PS version to test with orchestrator',
-      name: 'PS_VERSION'
+      name: 'PS_VERSION. WIP - ignored'.
     )
     string(
     defaultValue: 'https://github.com/eleo007/package-testing.git',
@@ -44,8 +44,8 @@ pipeline {
     stage('Run test') {
       steps {
           script {
-            currentBuild.displayName = "#${BUILD_NUMBER}-${PS_VERSION}-${OCHESTARTOR_VERSION}"
-            currentBuild.description = "${DOCKER_ACC}"
+            currentBuild.displayName = "#${BUILD_NUMBER}-${DOCKER_ACC}-${OCHESTARTOR_VERSION}"
+            currentBuild.description = "${PS_VERSION}"
           }
           sh '''
             # run test
