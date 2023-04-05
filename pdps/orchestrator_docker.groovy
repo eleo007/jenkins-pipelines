@@ -26,7 +26,7 @@ pipeline {
     string(
       defaultValue: '8.0.32-24',
       description: 'Full PS version to test with orchestrator',
-      name: 'PS_VERSION. WIP - ignored'.
+      name: 'PS_VERSION. WIP - ignored'
     )
     string(
     defaultValue: 'https://github.com/eleo007/package-testing.git',
