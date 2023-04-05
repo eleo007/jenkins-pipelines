@@ -6,7 +6,7 @@ library changelog: false, identifier: "lib@DISTMYSQL-278_orch_docker_new", retri
 
 pipeline {
   agent {
-      label "min-focal-x64"
+      label "docker-32gb"
   }
 
   parameters {
