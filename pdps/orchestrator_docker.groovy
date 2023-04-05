@@ -14,8 +14,8 @@ pipeline {
       name: 'DOCKER_ACC',
       description: 'Docker repo to use: percona or perconalab',
       choices: [
-        'percona',
-        'perconalab'
+        'perconalab',
+        'percona'
       ]
     )
     string(
