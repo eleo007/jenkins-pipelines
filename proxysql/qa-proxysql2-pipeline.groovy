@@ -97,6 +97,8 @@ pipeline {
                             " 2>&1 | tee build.log
                           
                             if [[ -f \$(ls ./proxysql/sources/proxysql/results/*.tar.gz | head -1) ]]; then
+                                content=$(ls -1 ./proxysql/sources/proxysql/results/*.tar.gz)
+                                echo ${content}
                                 until aws s3 cp --no-progress --acl public-read proxysql/sources/proxysql/results/*.tar.gz s3://pxc-build-cache/${BUILD_TAG}/proxysql-${BRANCH}.tar.gz; do
                                     sleep 5
                                 done
@@ -115,6 +117,8 @@ pipeline {
                     echo 'Test ProxySQL'
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'c42456e5-c28d-4962-b32c-b75d161bff27', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                         sh '''
+                            content=$(ls -1 ./proxysql/sources/proxysql/results/*.tar.gz)
+                            echo ${content}
                             until aws s3 cp --no-progress s3://pxc-build-cache/${BUILD_TAG}/proxysql-${BRANCH}.tar.gz ./proxysql/sources/proxysql/results/proxysql-${BRANCH}.tar.gz; do
                                 sleep 5
                             done
