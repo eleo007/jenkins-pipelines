@@ -74,7 +74,7 @@ pipeline {
         stage('Build ProxySQL') {
                 agent { label 'docker' }
                 steps {
-                    git branch: 'master', url: 'https://github.com/Percona-Lab/jenkins-pipelines'
+                    git branch: 'cmake_version', url: 'https://github.com/eleo007/jenkins-pipelines'
                     echo 'Checkout ProxySQL sources'
                     sh '''
                         # sudo is needed for better node recovery after compilation failure
@@ -111,7 +111,7 @@ pipeline {
         stage('Test ProxySQL') {
                 agent { label 'docker' }
                 steps {
-                    git branch: 'master', url: 'https://github.com/Percona-Lab/jenkins-pipelines'
+                    git branch: 'cmake_version', url: 'https://github.com/eleo007/jenkins-pipelines'
                     echo 'Test ProxySQL'
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'c42456e5-c28d-4962-b32c-b75d161bff27', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                         sh '''
