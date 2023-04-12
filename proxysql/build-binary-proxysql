@@ -34,9 +34,9 @@ if [ -f /usr/bin/yum ]; then
 elif [ -f /usr/bin/apt ]; then
   sudo apt-get install -y uuid-dev
   wget https://github.com/Kitware/CMake/releases/download/v3.19.8/cmake-3.19.8.tar.gz
-  tar -zxvf cmake-3.19.8.tar.gz
+  sudo tar -zxvf cmake-3.19.8.tar.gz
   cd cmake-3.19.8/
-  ./bootstrap
+  sudo ./bootstrap
   make
   sudo make install
   PATH=$PATH:/usr/local/bin
