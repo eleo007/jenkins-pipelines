@@ -16,8 +16,10 @@ docker run --rm \
     set -o errexit
     set -o xtrace
     export PXC_VERSION='${PXC_VERSION}'
+    export BRANCH='${BRANCH}'
 
     mkdir /tmp/results
+    content=$(ls -1 /tmp/proxysql/results/*.tar.gz)
     cp /tmp/proxysql/results/*.tar.gz /tmp/results
 
     bash -x /tmp/scripts/test-proxysql /tmp/results
