@@ -37,10 +37,10 @@ elif [ -f /usr/bin/apt ]; then
   sudo tar -zxvf cmake-3.19.8.tar.gz
   cd cmake-3.19.8/
   sudo ./bootstrap
-  make
+  sudo make
   sudo make install
   PATH=$PATH:/usr/local/bin
-  cmake --version
+  sudo cmake --version
 fi
 
 # We need to use golang version > 1.16. Downloading golang from tarball to ensure each platform uses the same version.
