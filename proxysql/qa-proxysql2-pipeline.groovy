@@ -62,20 +62,11 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '200', artifactNumToKeepStr: '200'))
     }
     stages {
-
-        // stage('Prepare') {
-        //         steps {
-        //             script {
-        //                 currentBuild.displayName = "#${BUILD_NUMBER}-${params.BRANCH}-${params.DOCKER_OS}-${params.CMAKE_BUILD_TYPE}"
-        //             }
-        //         }
-        // }
-
         stage('Build ProxySQL') {
                 agent { label 'docker' }
                 steps {
                     script {
-                        currentBuild.displayName = "#${BUILD_NUMBER}-${params.BRANCH}-${params.DOCKER_OS}-${params.CMAKE_BUILD_TYPE}"
+                        currentBuild.displayName = "#${BUILD_NUMBER}-${params.BRANCH}-${params.DOCKER_OS}-${params.CMAKE_BUILD_TYPE}-${params.PXC_VERSION}"
                     }
                     git branch: 'cmake_version', url: 'https://github.com/eleo007/jenkins-pipelines'
                     echo 'Checkout ProxySQL sources'
