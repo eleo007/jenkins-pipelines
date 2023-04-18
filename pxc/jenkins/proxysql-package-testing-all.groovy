@@ -20,7 +20,9 @@ void runNodeBuild(String node_to_test) {
 }
 
 pipeline {
-    agent none
+    agent {
+        label 'docker'
+    }
 
     parameters {
         choice(
@@ -47,6 +49,13 @@ pipeline {
     }
 
     stages {
+        stage("Prepare") {
+            steps {
+                script {
+                    currentBuild.displayName = "#${BUILD_NUMBER}-${params.product_to_test}-${params.install_repo}-${params.client_to_test}"
+                }
+            }
+        }
         stage('Run parallel') {
             parallel {
                 stage('Debian Buster') {
