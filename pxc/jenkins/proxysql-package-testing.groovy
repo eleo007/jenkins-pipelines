@@ -1,6 +1,6 @@
-library changelog: false, identifier: 'lib@master', retriever: modernSCM([
+library changelog: false, identifier: 'lib@proxysql_skip_update', retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/Percona-Lab/jenkins-pipelines.git'
+    remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ]) _
 
 product_action_playbooks = [
@@ -69,7 +69,7 @@ void runPlaybook(String action_to_test) {
     def playbook_path = "package-testing/playbooks/${playbook}"
 
     sh '''
-        git clone --depth 1 "${git_repo}"
+        git clone --depth 1 "${git_repo}" -b proxysql_skip_update
     '''
 
     setup_package_tests()
@@ -117,7 +117,7 @@ pipeline {
             name: 'install_repo'
         )
         string(
-            defaultValue: 'https://github.com/Percona-QA/package-testing.git',
+            defaultValue: 'https://github.com/eleo007/package-testing.git',
             description: '',
             name: 'git_repo',
             trim: false
@@ -154,7 +154,12 @@ pipeline {
                     agent {
                         label params.node_to_test
                     }
-
+                    when {
+                        beforeAgent true
+                        expression {
+                            params.install_repo != 'main'
+                        }
+                    }
                     steps {
                         runPlaybook("upgrade")
                     }
