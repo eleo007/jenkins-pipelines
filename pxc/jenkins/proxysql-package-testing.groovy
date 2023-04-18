@@ -69,7 +69,7 @@ void runPlaybook(String action_to_test) {
     def playbook_path = "package-testing/playbooks/${playbook}"
 
     sh '''
-        git clone --depth 1 "${git_repo}" -b proxysql_skip_update
+        git clone --depth 1 "${git_repo}" -b proxysql_check_all_binaries
     '''
 
     setup_package_tests()
