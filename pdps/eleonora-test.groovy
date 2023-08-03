@@ -13,7 +13,7 @@ pipeline {
       MOLECULE_DIR = "molecule/pdmysql/${SCENARIO}";
     }
     parameters {
-          pdpsSharedParams()
+        pdpsSharedParams()
     }
     options {
           withCredentials(moleculePdpsJenkinsCreds())

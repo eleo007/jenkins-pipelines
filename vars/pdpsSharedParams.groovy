@@ -1,5 +1,5 @@
 def call() {
-    return [
+    return {
         choice(
             name: 'PLATFORM',
             description: 'For what platform (OS) need to test',
@@ -76,5 +76,5 @@ def call() {
                 'no'
             ]
         )
-    ]
+    }
 }
