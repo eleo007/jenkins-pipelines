@@ -4,10 +4,8 @@
 
 def call() {
     stage('Set build name'){    
-        steps {
             sh """
             echo 'Hello from Ella'
             """
-        }
     }
 }
