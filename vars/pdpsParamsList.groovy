@@ -1,3 +1,3 @@
 def call() {
-    return 'Some Name'
+    'Some Name'
 }
