@@ -10,7 +10,7 @@ pipeline {
     }
 
     parameters {
-        text(pdpsParamsList())
+        text((name: pdpsParamsList(), defaultValue: 'One\nTwo\nThree\n', description: ''))
     }
 
     options {
