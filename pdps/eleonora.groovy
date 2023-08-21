@@ -8,8 +8,10 @@ pipeline {
     agent {
     label 'docker'
     }
-    
-pdpsParamsList()
+
+    parameters {
+        pdpsParamsList()
+    }
 
     options {
           withCredentials(moleculePdpsJenkinsCreds())
