@@ -8,4 +8,9 @@ def call() {
             echo 'Hello from Ella'
             """
     }
+    stage('Set one more build name'){    
+            sh """
+            echo 'Hello from Ella2'
+            """
+    }
 }
