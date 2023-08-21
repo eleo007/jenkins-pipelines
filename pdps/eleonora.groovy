@@ -9,7 +9,7 @@ pipeline {
     label 'docker'
     }
     
-    pdps_params_list()
+    pdpsParamsList()
 
     options {
           withCredentials(moleculePdpsJenkinsCreds())
