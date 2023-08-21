@@ -3,7 +3,9 @@
 // }
 
 def call() {
-    sh """
-    echo 'Hello from Ella'
-    """
+    steps {
+        sh """
+        echo 'Hello from Ella'
+        """
+    }
 }

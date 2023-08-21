@@ -19,9 +19,7 @@ pipeline {
     }
     stages {
         stage('Set build name'){
-            steps {
-                pdpsParamsList()
-            }
+            pdpsParamsList()
         }
     }
 }
