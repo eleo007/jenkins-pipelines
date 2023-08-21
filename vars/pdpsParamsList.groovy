@@ -1,3 +1,3 @@
 def call() {
-    name: 'My new Some Name'
+    text(name: 'Some My Name', defaultValue: 'One\nTwo\nThree\n', description: '')
 }
