@@ -18,8 +18,6 @@ pipeline {
           disableConcurrentBuilds()
     }
     stages {
-        stage('Set build name'){
-            pdpsParamsList()
-        }
+        pdpsParamsList()
     }
 }

@@ -3,9 +3,11 @@
 // }
 
 def call() {
-    steps {
-        sh """
-        echo 'Hello from Ella'
-        """
+    stage('Set build name'){    
+        steps {
+            sh """
+            echo 'Hello from Ella'
+            """
+        }
     }
 }
