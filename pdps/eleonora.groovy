@@ -18,8 +18,10 @@ pipeline {
           disableConcurrentBuilds()
     }
     stages {
-        script {
-            pdpsParamsList()
+        steps {
+            script {
+                pdpsParamsList()
+            }
         }
     }
 }
