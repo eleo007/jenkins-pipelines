@@ -10,7 +10,7 @@ pipeline {
     }
 
     parameters {
-        text(pdpsParamsList.groovy)
+        text(pdpsParamsList())
     }
 
     options {

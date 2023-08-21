@@ -1,3 +1,3 @@
 def call() {
-    return text(name: 'DEPLOY_TEXT', defaultValue: 'One\nTwo\nThree\n', description: '')
+    return (name: 'DEPLOY_TEXT', defaultValue: 'One\nTwo\nThree\n', description: '')
 }
