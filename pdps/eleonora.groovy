@@ -3,7 +3,7 @@ library changelog: false, identifier: "lib@move_params", retriever: modernSCM([
     remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ])
 
-pdpsParamsList(${env.JOB_NAME})
+pdpsParamsList(currentBuild.projectName)
 
 pipeline {
     agent {
