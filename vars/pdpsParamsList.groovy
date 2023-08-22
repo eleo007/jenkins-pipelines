@@ -65,7 +65,7 @@ def call() {
         name: 'ORCHESTRATOR_TESTS_VERSION'
         )
     ]
-    if (${JOB_NAME} == eleonora){
+    if (env.JOB_NAME == eleonora){
         common_parameters.add(
                         booleanParam(
                         name: 'ELLA_JOB',
