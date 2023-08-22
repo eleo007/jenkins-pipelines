@@ -1,7 +1,7 @@
 def call() {
     properties([
         parameters([
-                text(name: 'Some My Name', defaultValue: 'One\nTwo\nThree\n', description: '')
+                text(name: 'Some My Name', defaultValue: 'One\nTwo\nThree\nFour\n', description: '')
         ])
     ])
 }
