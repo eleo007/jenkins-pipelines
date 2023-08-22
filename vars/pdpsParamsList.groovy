@@ -65,11 +65,19 @@ def call() {
         name: 'ORCHESTRATOR_TESTS_VERSION'
         )
     ]
-    common_parameters.add(
-                booleanParam(
-                name: 'MAJOR_REPO',
-                description: "Enable to use major (pdps-8.0) repo instead of pdps-8.0.XX"
-                ))
+    if (jobName == eleonora){
+        common_parameters.add(
+                        booleanParam(
+                        name: 'ELLA_JOB',
+                        description: "Your if condition works like a charm!"
+                        ))
+        } else {
+        common_parameters.add(
+                        booleanParam(
+                        name: 'MAJOR_REPO',
+                        description: "Enable to use major (pdps-8.0) repo instead of pdps-8.0.XX"
+                        ))
+        }
     properties([
         parameters(
                 common_parameters
