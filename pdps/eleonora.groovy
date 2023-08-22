@@ -3,14 +3,11 @@ library changelog: false, identifier: "lib@move_params", retriever: modernSCM([
     remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ])
 
+pdpsParamsList()
 
 pipeline {
     agent {
     label 'docker'
-    }
-
-    parameters {
-        text(name: 'Some My Name', defaultValue: 'One\nTwo\nThree\n', description: '')
     }
 
     options {
@@ -19,9 +16,11 @@ pipeline {
     }
     stages {
         stage('Test'){
-            steps {
-                script {
-                    pdpsParamsList()
+             steps {
+                 script {
+                sh """
+                echo 'Hello from Ella'
+                """
                 }
             }
         }
