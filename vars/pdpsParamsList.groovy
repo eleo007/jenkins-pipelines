@@ -10,10 +10,6 @@ def call() {
                         'release'
                         ]
                 )
-                booleanParam(
-                name: 'MAJOR_REPO',
-                description: "Enable to use major (pdps-8.0) repo instead of pdps-8.0.XX"
-                )
         ])
     ])
 }
