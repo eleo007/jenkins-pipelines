@@ -9,6 +9,15 @@ def call() {
                         'experimental',
                         'release'
                         ]
+                ),
+                choice(
+                name: 'REPO2',
+                description: 'Repo for testing',
+                choices: [
+                        'testing',
+                        'experimental',
+                        'release'
+                        ]
                 )
         ])
     ])
