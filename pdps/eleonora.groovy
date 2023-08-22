@@ -18,9 +18,7 @@ pipeline {
         stage('Test'){
              steps {
                  script {
-                sh """
-                echo 'Hello from Ella'
-                """
+                    currentBuild.displayName = "${env.BUILD_NUMBER}-${env.PLATFORM}-${env.SCENARIO}-${env.MAJOR_REPO}"
                 }
             }
         }
