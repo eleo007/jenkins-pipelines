@@ -1,4 +1,4 @@
-library changelog: false, identifier: 'lib@teletetry', retriever: modernSCM([
+library changelog: false, identifier: 'lib@telemetry', retriever: modernSCM([
     $class: 'GitSCMSource',
     remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ]) _
