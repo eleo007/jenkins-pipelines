@@ -16,22 +16,6 @@ pipeline {
             description: 'PS Version for tests. ',
             name: 'PS_VER_FULL')
         string(
-            defaultValue: '8.0.34-29.1',
-            description: 'PXB Version for tests. ',
-            name: 'PXB_VER_FULL')
-        string(
-            defaultValue: '3.2.6-10',
-            description: 'Orchestrator Version for tests. ',
-            name: 'ORCH_VER_FULL')
-        string(
-            defaultValue: '3.5.4',
-            description: 'PT Version for tests. ',
-            name: 'PT_VER')
-        string(
-            defaultValue: '2.5.5',
-            description: 'Proxysql Version for tests. ',
-            name: 'PROXYSQL_VER')
-        string(
             defaultValue: 'site_checks_pull',
             description: 'Branch for testing repository',
             name: 'TESTING_BRANCH')
@@ -59,10 +43,8 @@ pipeline {
                 script {
                     sh """
                         cd site_checks
-                        docker run --env PS_VER_FULL=${params.PS_VER_FULL} --env PXB_VER_FULL=${params.PXB_VER_FULL} --env ORCH_VER_FULL=${params.ORCH_VER_FULL} \
-                        --env PT_VER=${params.PT_VER} --env PROXYSQL_VER=${params.PROXYSQL_VER} --rm -v `pwd`:/tmp -w /tmp python bash -c \
-                        'pip3 install requests pytest setuptools && \
-                        pytest -s --junitxml=junit.xml test_pdps.py || [ \$? = 1 ] '
+                        docker run --env PS_VER_FULL=${params.PS_VER_FULL} --rm -v `pwd`:/tmp -w /tmp python bash -c \
+                        'pip3 install requests pytest setuptools && pytest -s --junitxml=junit.xml test_ps.py || [ \$? = 1 ] '
                     """
                 }
             }
