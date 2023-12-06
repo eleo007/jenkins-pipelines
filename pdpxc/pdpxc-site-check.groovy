@@ -63,7 +63,7 @@ pipeline {
                 script {
                     sh """
                         cd site_checks
-                        docker run --env PS_VER_FULL=${params.PXC_VER_FULL} --env PXB_VER_FULL=${params.PXB_VER_FULL} --env PT_VER=${params.PT_VER} \
+                        docker run --env PXC_VER_FULL=${params.PXC_VER_FULL} --env PXB_VER_FULL=${params.PXB_VER_FULL} --env PT_VER=${params.PT_VER} \
                         --env PROXYSQL_VER=${params.PROXYSQL_VER} --env HAPROXY_VER=${params.HAPROXY_VER} --env REPL_MAN_VER=${params.REPL_MAN_VER} \
                         --rm -v `pwd`:/tmp -w /tmp python bash -c \
                         'pip3 install requests pytest setuptools && pytest -s --junitxml=junit.xml test_pdpxc.py || [ \$? = 1 ] '
