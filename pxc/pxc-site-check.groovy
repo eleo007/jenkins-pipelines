@@ -48,8 +48,8 @@ pipeline {
                     sh """
                         cd site_checks
                         docker run --env PXC_VER_FULL=${params.PXC_VER_FULL} --env PXC57_INNODB=${params.PXC57_INNODB} \
-                        --rm -v `pwd`:/tmp -w /tmp python bash -c \
-                        'pip3 install requests pytest setuptools && pytest -s --junitxml=junit.xml test_pxc.py || [ \$? = 1 ] '
+                            --rm -v `pwd`:/tmp -w /tmp python bash -c \
+                            'pip3 install requests pytest setuptools && pytest -s --junitxml=junit.xml test_pxc.py || [ \$? = 1 ] '
                     """
                 }
             }
