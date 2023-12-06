@@ -1,6 +1,6 @@
-library changelog: false, identifier: "lib@master", retriever: modernSCM([
+library changelog: false, identifier: "lib@site_checks", retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/Percona-Lab/jenkins-pipelines.git'
+    remote: 'https://github.com/eleo007/jenkins-pipelines.git'
 ])
 
 pipeline {
@@ -35,6 +35,10 @@ pipeline {
             defaultValue: 'main',
             description: 'Branch for testing repository',
             name: 'TESTING_BRANCH')
+        string(
+            defaultValue: 'eleo007',
+            description: 'Branch for testing repository',
+            name: 'TESTING_GIT_ACCOUNT')
     }
     stages {
         stage('Set build name'){
@@ -47,7 +51,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 deleteDir()
-                git poll: false, branch: TESTING_BRANCH, url: 'https://github.com/Percona-QA/package-testing.git'
+                git poll: false, branch: TESTING_BRANCH, url: "https://github.com/${TESTING_GIT_ACCOUNT}/package-testing.git"
             }
         }
         stage('Test') {
