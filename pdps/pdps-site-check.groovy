@@ -62,7 +62,7 @@ pipeline {
                         docker run --env PS_VER_FULL=${params.PS_VER_FULL} --env PXB_VER_FULL=${params.PXB_VER_FULL} --env ORCH_VER_FULL=${params.ORCH_VER_FULL} \
                         --env PT_VER=${params.PT_VER} --env PROXYSQL_VER=${params.PROXYSQL_VER} --rm -v `pwd`:/tmp -w /tmp python bash -c \
                         'pip3 install requests pytest setuptools && \
-                        pytest -s --junitxml=junit.xml test_psmdb.py || [ \$? = 1 ] '
+                        pytest -s --junitxml=junit.xml test_pdps.py || [ \$? = 1 ] '
                     """
                 }
             }
