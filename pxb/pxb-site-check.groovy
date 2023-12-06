@@ -13,7 +13,7 @@ pipeline {
     parameters {
         string(
             defaultValue: '8.0.34-29.1',
-            description: 'PS Version for tests. ',
+            description: 'Full PXB version for tests. Examples: 2.4.28-1; 8.0.34-29.1; 8.1.0-1.1',
             name: 'PXB_VER_FULL')
         string(
             defaultValue: 'site_checks_pull',
@@ -28,7 +28,7 @@ pipeline {
         stage('Set build name'){
             steps {
                 script {
-                    currentBuild.displayName = "${params.PXB_VER_FULL}-${params.TESTING_BRANCH}"
+                    currentBuild.displayName = "#${BUILD_NUMBER}-${params.PXB_VER_FULL}-${params.TESTING_BRANCH}"
                 }
             }
         }

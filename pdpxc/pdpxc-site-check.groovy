@@ -13,27 +13,27 @@ pipeline {
     parameters {
         string(
             defaultValue: '8.0.34-26.1',
-            description: 'PS Version for tests. ',
+            description: 'Full PXC version for tests. Examples: 8.0.34-26.1; 8.1.0-1.1',
             name: 'PXC_VER_FULL')
         string(
             defaultValue: '8.0.34-29.1',
-            description: 'PXB Version for tests. ',
+            description: 'Full PXB version for tests. Examples: 8.0.34-29.1; 8.1.0-1.1',
             name: 'PXB_VER_FULL')
         string(
             defaultValue: '3.5.5',
-            description: 'PT Version for tests. ',
+            description: 'PT version for tests. Example: 3.5.5',
             name: 'PT_VER')
         string(
             defaultValue: '2.5.5',
-            description: 'Proxysql Version for tests. ',
+            description: 'Proxysql version for tests. Example: 2.5.5',
             name: 'PROXYSQL_VER')
         string(
             defaultValue: '2.8.1',
-            description: 'Orchestrator Version for tests. ',
+            description: 'HAproxy version for tests. Example: 2.8.1',
             name: 'HAPROXY_VER')
         string(
             defaultValue: '1.0',
-            description: 'Orchestrator Version for tests. ',
+            description: 'Replication manager version for tests.  Example: 1.0',
             name: 'REPL_MAN_VER')
         string(
             defaultValue: 'site_checks_pull',
@@ -48,7 +48,7 @@ pipeline {
         stage('Set build name'){
             steps {
                 script {
-                    currentBuild.displayName = "${params.PXC_VER_FULL}-${params.TESTING_BRANCH}"
+                    currentBuild.displayName = "#${BUILD_NUMBER}-${params.PXC_VER_FULL}-${params.TESTING_BRANCH}"
                 }
             }
         }
@@ -64,9 +64,9 @@ pipeline {
                     sh """
                         cd site_checks
                         docker run --env PXC_VER_FULL=${params.PXC_VER_FULL} --env PXB_VER_FULL=${params.PXB_VER_FULL} --env PT_VER=${params.PT_VER} \
-                        --env PROXYSQL_VER=${params.PROXYSQL_VER} --env HAPROXY_VER=${params.HAPROXY_VER} --env REPL_MAN_VER=${params.REPL_MAN_VER} \
-                        --rm -v `pwd`:/tmp -w /tmp python bash -c \
-                        'pip3 install requests pytest setuptools && pytest -s --junitxml=junit.xml test_pdpxc.py || [ \$? = 1 ] '
+                            --env PROXYSQL_VER=${params.PROXYSQL_VER} --env HAPROXY_VER=${params.HAPROXY_VER} --env REPL_MAN_VER=${params.REPL_MAN_VER} \
+                            --rm -v `pwd`:/tmp -w /tmp python bash -c \
+                            'pip3 install requests pytest setuptools && pytest -s --junitxml=junit.xml test_pdpxc.py || [ \$? = 1 ] '
                     """
                 }
             }

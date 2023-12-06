@@ -13,7 +13,7 @@ pipeline {
     parameters {
         string(
             defaultValue: '8.0.34-26.1',
-            description: 'PS Version for tests. ',
+            description: 'Full PS Version for tests. Examples: 5.7.44-48.1; 8.0.34-26.1; 8.1.0-1.1',
             name: 'PS_VER_FULL')
         string(
             defaultValue: 'site_checks_pull',
@@ -28,7 +28,7 @@ pipeline {
         stage('Set build name'){
             steps {
                 script {
-                    currentBuild.displayName = "${params.PS_VER_FULL}-${params.TESTING_BRANCH}"
+                    currentBuild.displayName = "#${BUILD_NUMBER}-${params.PS_VER_FULL}-${params.TESTING_BRANCH}"
                 }
             }
         }
@@ -43,8 +43,9 @@ pipeline {
                 script {
                     sh """
                         cd site_checks
-                        docker run --env PS_VER_FULL=${params.PS_VER_FULL} --rm -v `pwd`:/tmp -w /tmp python bash -c \
-                        'pip3 install requests pytest setuptools && pytest -s --junitxml=junit.xml test_ps.py || [ \$? = 1 ] '
+                        docker run --env PS_VER_FULL=${params.PS_VER_FULL} \
+                            --rm -v `pwd`:/tmp -w /tmp python bash -c \
+                            'pip3 install requests pytest setuptools && pytest -s --junitxml=junit.xml test_ps.py || [ \$? = 1 ] '
                     """
                 }
             }

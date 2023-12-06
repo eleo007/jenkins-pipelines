@@ -13,11 +13,11 @@ pipeline {
     parameters {
         string(
             defaultValue: '8.0.34-26.1',
-            description: 'PS Version for tests. ',
+            description: 'Full PXC version for tests. Examples: 5.7.43-31.65.1; 8.0.34-26.1; 8.1.0-1.1',
             name: 'PXC_VER_FULL')
         string(
             defaultValue: '47',
-            description: 'PXB Version for tests. ',
+            description: 'PXC 5.7 INNODB version for tests. Only for 5.7. Leave default for PXC 8.0 +',
             name: 'PXC57_INNODB')
         string(
             defaultValue: 'site_checks_pull',
@@ -32,7 +32,7 @@ pipeline {
         stage('Set build name'){
             steps {
                 script {
-                    currentBuild.displayName = "${params.PXC_VER_FULL}-${params.TESTING_BRANCH}"
+                    currentBuild.displayName = "#${BUILD_NUMBER}-${params.PXC_VER_FULL}-${params.TESTING_BRANCH}"
                 }
             }
         }
