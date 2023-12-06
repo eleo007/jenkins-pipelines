@@ -1,6 +1,6 @@
-library changelog: false, identifier: "lib@site_checks", retriever: modernSCM([
+library changelog: false, identifier: "lib@master", retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/eleo007/jenkins-pipelines.git'
+    remote: 'https://github.com/Percona-Lab/jenkins-pipelines.git'
 ])
 
 pipeline {
@@ -32,11 +32,11 @@ pipeline {
             description: 'Proxysql Version for tests. Example: 2.5.5',
             name: 'PROXYSQL_VER')
         string(
-            defaultValue: 'site_checks_pull',
+            defaultValue: 'master',
             description: 'Branch for testing repository',
             name: 'TESTING_BRANCH')
         string(
-            defaultValue: 'eleo007',
+            defaultValue: 'Percona-QA',
             description: 'Branch for testing repository',
             name: 'TESTING_GIT_ACCOUNT')
     }

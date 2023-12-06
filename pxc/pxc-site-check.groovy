@@ -1,6 +1,6 @@
-library changelog: false, identifier: "lib@site_checks", retriever: modernSCM([
+library changelog: false, identifier: "lib@master", retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/eleo007/jenkins-pipelines.git'
+    remote: 'https://github.com/Percona-Lab/jenkins-pipelines.git'
 ])
 
 pipeline {
@@ -20,11 +20,11 @@ pipeline {
             description: 'PXC 5.7 INNODB version for tests. Only for 5.7. Leave default for PXC 8.0 +',
             name: 'PXC57_INNODB')
         string(
-            defaultValue: 'site_checks_pull',
+            defaultValue: 'master',
             description: 'Branch for testing repository',
             name: 'TESTING_BRANCH')
         string(
-            defaultValue: 'eleo007',
+            defaultValue: 'Percona-QA',
             description: 'Branch for testing repository',
             name: 'TESTING_GIT_ACCOUNT')
     }

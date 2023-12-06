@@ -1,6 +1,6 @@
-library changelog: false, identifier: "lib@site_checks", retriever: modernSCM([
+library changelog: false, identifier: "lib@master", retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/eleo007/jenkins-pipelines.git'
+    remote: 'https://github.com/Percona-Lab/jenkins-pipelines.git'
 ])
 
 pipeline {
@@ -16,11 +16,11 @@ pipeline {
             description: 'Full PXB version for tests. Examples: 2.4.28-1; 8.0.34-29.1; 8.1.0-1.1',
             name: 'PXB_VER_FULL')
         string(
-            defaultValue: 'site_checks_pull',
+            defaultValue: 'master',
             description: 'Branch for testing repository',
             name: 'TESTING_BRANCH')
         string(
-            defaultValue: 'eleo007',
+            defaultValue: 'Percona-QA',
             description: 'Branch for testing repository',
             name: 'TESTING_GIT_ACCOUNT')
     }
