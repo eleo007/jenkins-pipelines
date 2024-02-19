@@ -25,12 +25,6 @@ pipeline {
             description: "Repo to use in install test"
         )
 
-        choice(
-            name: "node_to_test",
-            choices: all_nodes,
-            description: "Node in which to test the product"
-        )
-
         // choice(
         //     name: "action_to_test",
         //     choices: ["all"] + all_actions,
