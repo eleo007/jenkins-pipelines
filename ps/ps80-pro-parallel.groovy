@@ -94,7 +94,7 @@ pipeline {
           steps {
             withCredentials([usernamePassword(credentialsId: 'PS_PRIVATE_REPO_ACCESS', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                 script {
-                    moleculeParallelTest(ps80ProOperatingSystems(), env.MOLECULE_DIR)
+                    moleculeParallelTest('ubuntu-jammy', env.MOLECULE_DIR)
                 }
             }
         }
@@ -103,7 +103,7 @@ pipeline {
     post {
         always {
           script {
-              moleculeParallelPostDestroy(ps80ProOperatingSystems(), env.MOLECULE_DIR)
+              moleculeParallelPostDestroy('ubuntu-jammy', env.MOLECULE_DIR)
          }
       }
    }
