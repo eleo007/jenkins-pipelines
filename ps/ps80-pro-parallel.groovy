@@ -47,6 +47,11 @@ pipeline {
             description: 'PDMYSQL scenario for test',
             choices: ["install",]
         )
+        choice(
+            name: 'pro_test',
+            description: 'Mark whether the test is for pro packages or not',
+            choices: ["yes",'no']
+        )
         string(
             defaultValue: 'pro_build_job',
             description: 'Branch for package-testing repository',
