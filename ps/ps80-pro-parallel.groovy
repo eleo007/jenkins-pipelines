@@ -66,7 +66,6 @@ pipeline {
   }
   options {
           withCredentials(moleculePdpsJenkinsCreds())
-          withCredentials([string(credentialsId: 'PS-80-PRO-JENKINS-TOKEN', variable: 'PRO-TOKEN')])
           disableConcurrentBuilds()
   }
     stages {
@@ -93,12 +92,14 @@ pipeline {
         }
         stage('Test') {
           steps {
+            withCredentials([usernamePassword(credentialsId: 'PS_PRIVATE_REPO_ACCESS', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                 script {
                     moleculeParallelTest(ps80ProOperatingSystems(), env.MOLECULE_DIR)
                 }
             }
-         }
-  }
+        }
+    }
+}
     post {
         always {
           script {
