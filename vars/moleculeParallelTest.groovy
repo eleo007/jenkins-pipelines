@@ -4,6 +4,7 @@ def call(operatingSystems, moleculeDir) {
    tests["${os}"] =  {
         stage("${os}") {
             sh """
+                  export Molecule_Debug=1
                   . virtenv/bin/activate
                   cd ${moleculeDir}
                   molecule test -s ${os}
