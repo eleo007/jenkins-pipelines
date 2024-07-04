@@ -152,7 +152,9 @@ void createCluster(String CLUSTER_SUFFIX) {
     clusters.add("$CLUSTER_SUFFIX")
 
     if ("$CLUSTER_WIDE" == "YES") {
-        OPERATOR_NS = 'ps-operator'
+        sh """
+            export OPERATOR_NS='ps-operator'
+        """
     }
 
     sh """
